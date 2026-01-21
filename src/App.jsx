@@ -232,6 +232,10 @@ const Phase1Welcome = ({ onProceed }) => (
       >
         Create Your Profile <ChevronRight className="w-5 h-5" />
       </button>
+
+      <p className="text-xs text-gray-500 mt-6 max-w-2xl mx-auto">
+        💡 <strong>Full App KYC:</strong> The production version will require government ID verification, proof of address, and banking data integration for compliance. This prototype demonstrates the user experience with basic onboarding.
+      </p>
     </div>
   </div>
 );
@@ -272,7 +276,7 @@ const Phase1Signup = ({ onComplete }) => {
     }
   ];
 
-  const countries = ['Germany', 'France', 'Italy', 'Spain', 'Poland', 'Netherlands', 'Belgium', 'Other EU Country'];
+  const countries = ['Estonia', 'Germany', 'France', 'Italy', 'Spain', 'Poland', 'Netherlands', 'Belgium', 'Other EU Country'];
   const statuses = ['Student', 'Young Professional', 'Expat', 'Migrant', 'Remote Worker'];
 
   const currentStep = steps[step];
