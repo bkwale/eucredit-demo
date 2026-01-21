@@ -209,20 +209,20 @@ const Phase1Welcome = ({ onProceed }) => (
 
       <div className="grid grid-cols-2 gap-6 mb-12">
         <div className="bg-white rounded-xl p-6 border-l-4 border-indigo-600">
-          <h3 className="font-bold text-gray-900 mb-2">€2/month</h3>
-          <p className="text-sm text-gray-600">Subscription for credit building</p>
+          <h3 className="font-bold text-gray-900 mb-2">€48 Locked Loan</h3>
+          <p className="text-sm text-gray-600">Credit builder that you can't spend</p>
         </div>
         <div className="bg-white rounded-xl p-6 border-l-4 border-indigo-600">
+          <h3 className="font-bold text-gray-900 mb-2">€2/month Repayment</h3>
+          <p className="text-sm text-gray-600">Pay back in 24 months • Builds credit</p>
+        </div>
+        <div className="bg-white rounded-xl p-6 border-l-4 border-blue-600">
           <h3 className="font-bold text-gray-900 mb-2">26 EU States</h3>
           <p className="text-sm text-gray-600">Your credit profile travels with you</p>
         </div>
         <div className="bg-white rounded-xl p-6 border-l-4 border-blue-600">
-          <h3 className="font-bold text-gray-900 mb-2">Real-time</h3>
-          <p className="text-sm text-gray-600">Credit score updates as you build</p>
-        </div>
-        <div className="bg-white rounded-xl p-6 border-l-4 border-blue-600">
-          <h3 className="font-bold text-gray-900 mb-2">Verified Data</h3>
-          <p className="text-sm text-gray-600">Connected to EU banking rails</p>
+          <h3 className="font-bold text-gray-900 mb-2">Real-time Scoring</h3>
+          <p className="text-sm text-gray-600">Credit score grows with each payment</p>
         </div>
       </div>
 
@@ -366,17 +366,31 @@ const Phase1Dashboard = ({ userProfile, creditScore, onProceedToCard }) => (
         </p>
       </div>
 
-      {/* Monthly Subscription */}
+      {/* Credit Building Loan */}
       <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
         <div className="flex items-center gap-3 mb-4">
           <Banknote className="w-5 h-5 text-indigo-600" />
-          <p className="text-sm text-gray-600">Monthly Subscription</p>
+          <p className="text-sm text-gray-600">Credit Builder Loan</p>
         </div>
-        <p className="text-3xl font-bold text-gray-900 mb-4">€2</p>
-        <p className="text-xs text-gray-500 mb-4">Auto-renews • Cancel anytime</p>
-        <button className="w-full text-indigo-600 font-semibold py-2 px-4 rounded-lg hover:bg-indigo-50 transition">
-          Manage Billing
-        </button>
+        <p className="text-3xl font-bold text-gray-900 mb-2">€48</p>
+        <p className="text-xs text-gray-500 mb-4">Locked • Building your credit</p>
+        <div className="space-y-3">
+          <div>
+            <div className="flex justify-between text-xs text-gray-600 mb-1">
+              <span>Monthly payment</span>
+              <span className="font-semibold">€2</span>
+            </div>
+          </div>
+          <div>
+            <div className="flex justify-between text-xs text-gray-600 mb-1">
+              <span>Duration</span>
+              <span className="font-semibold">24 months</span>
+            </div>
+          </div>
+          <div className="bg-indigo-50 rounded-lg p-2">
+            <p className="text-xs text-indigo-700 font-semibold">Repayment in progress</p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -416,6 +430,32 @@ const Phase1Dashboard = ({ userProfile, creditScore, onProceedToCard }) => (
           </div>
         </div>
       </div>
+
+      <div className="bg-white rounded-xl p-6 border border-gray-200">
+        <h4 className="font-bold text-gray-900 mb-4 flex items-center gap-2">
+          <Banknote className="w-5 h-5 text-indigo-600" />
+          Loan Repayment Progress
+        </h4>
+        <div className="space-y-3">
+          <div className="flex justify-between items-center text-sm mb-2">
+            <span className="text-gray-600">Total loan</span>
+            <span className="font-semibold text-gray-900">€48</span>
+          </div>
+          <div className="w-full bg-gray-200 rounded-full h-3">
+            <div
+              className="bg-green-500 rounded-full h-3 transition-all duration-300"
+              style={{width: `${((creditScore - 320) / 260) * 100}%`}}
+            />
+          </div>
+          <div className="flex justify-between items-center text-xs text-gray-600 mt-2">
+            <span>Paid: €{Math.round(((creditScore - 320) / 260) * 48)}</span>
+            <span>Remaining: €{Math.round(48 - ((creditScore - 320) / 260) * 48)}</span>
+          </div>
+          <div className="text-xs text-gray-600 mt-3 pt-3 border-t">
+            ~{Math.max(0, 24 - Math.round(((creditScore - 320) / 260) * 24))} months remaining
+          </div>
+        </div>
+      </div>
     </div>
 
     {/* Investor Callout */}
@@ -425,10 +465,12 @@ const Phase1Dashboard = ({ userProfile, creditScore, onProceedToCard }) => (
         💼 Investor: Business Model (Phase 1)
       </h4>
       <ul className="space-y-2 text-sm text-amber-900">
-        <li>✓ €2/month × users = recurring revenue</li>
-        <li>✓ Target early: 50K users in 6 months (students + expats)</li>
+        <li>✓ €48 credit builder loan × users = upfront capital requirement</li>
+        <li>✓ €2/month × 24 months = recurring revenue + repayment</li>
+        <li>✓ Each user lifetime value: €48 loan + credit score data</li>
+        <li>✓ Target: 50K users in 6 months (students + expats)</li>
         <li>✓ Unit acquisition cost: €8 (viral referrals + EU startup programs)</li>
-        <li>✓ Payback period: 4 months (€1.2M MRR at 600K users)</li>
+        <li>✓ At 600K users: €12M ARR from subscriptions alone</li>
       </ul>
     </div>
 
