@@ -80,10 +80,10 @@ const EUCreditPrototype = () => {
           </div>
           <div className="text-sm text-amber-900 space-y-2">
             <p><strong>TAM:</strong> €2.3B annually (young EU population + expats)</p>
-            <p><strong>Unit Economics:</strong> €24/user/year × 50M target users</p>
+            <p><strong>Unit Economics:</strong> €60/user/year (€5/month × 12) × 50M target users</p>
             <p><strong>Wedge:</strong> Credit identity + Travel loyalty (unserved gap)</p>
             <p><strong>Moat:</strong> Proprietary EU credit data + airline/rail partnerships</p>
-            <p><strong>Path to Profitability:</strong> Year 2 (subscription + card fees + lending spreads)</p>
+            <p><strong>Path to Profitability:</strong> Year 2 (100% margin subscriptions + card fees + lending)</p>
           </div>
         </div>
       )}
@@ -213,8 +213,8 @@ const Phase1Welcome = ({ onProceed }) => (
           <p className="text-sm text-gray-600">Credit builder that you can't spend</p>
         </div>
         <div className="bg-white rounded-xl p-6 border-l-4 border-indigo-600">
-          <h3 className="font-bold text-gray-900 mb-2">€2/month Repayment</h3>
-          <p className="text-sm text-gray-600">Pay back in 24 months • Builds credit</p>
+          <h3 className="font-bold text-gray-900 mb-2">€5/month Service Fee</h3>
+          <p className="text-sm text-gray-600">24-month credit building • Reports to EU bureaus</p>
         </div>
         <div className="bg-white rounded-xl p-6 border-l-4 border-blue-600">
           <h3 className="font-bold text-gray-900 mb-2">26 EU States</h3>
@@ -366,19 +366,19 @@ const Phase1Dashboard = ({ userProfile, creditScore, onProceedToCard }) => (
         </p>
       </div>
 
-      {/* Credit Building Loan */}
+      {/* Credit Building Service */}
       <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
         <div className="flex items-center gap-3 mb-4">
           <Banknote className="w-5 h-5 text-indigo-600" />
-          <p className="text-sm text-gray-600">Credit Builder Loan</p>
+          <p className="text-sm text-gray-600">Credit Building Service</p>
         </div>
-        <p className="text-3xl font-bold text-gray-900 mb-2">€48</p>
-        <p className="text-xs text-gray-500 mb-4">Locked • Building your credit</p>
+        <p className="text-3xl font-bold text-gray-900 mb-2">€5</p>
+        <p className="text-xs text-gray-500 mb-4">/month • Reports to EU bureaus</p>
         <div className="space-y-3">
           <div>
             <div className="flex justify-between text-xs text-gray-600 mb-1">
-              <span>Monthly payment</span>
-              <span className="font-semibold">€2</span>
+              <span>Monthly service fee</span>
+              <span className="font-semibold">€5</span>
             </div>
           </div>
           <div>
@@ -388,7 +388,7 @@ const Phase1Dashboard = ({ userProfile, creditScore, onProceedToCard }) => (
             </div>
           </div>
           <div className="bg-indigo-50 rounded-lg p-2">
-            <p className="text-xs text-indigo-700 font-semibold">Repayment in progress</p>
+            <p className="text-xs text-indigo-700 font-semibold">€120 total • 100% margin SaaS</p>
           </div>
         </div>
       </div>
@@ -465,12 +465,12 @@ const Phase1Dashboard = ({ userProfile, creditScore, onProceedToCard }) => (
         💼 Investor: Business Model (Phase 1)
       </h4>
       <ul className="space-y-2 text-sm text-amber-900">
-        <li>✓ €48 credit builder loan × users = upfront capital requirement</li>
-        <li>✓ €2/month × 24 months = recurring revenue + repayment</li>
-        <li>✓ Each user lifetime value: €48 loan + credit score data</li>
-        <li>✓ Target: 50K users in 6 months (students + expats)</li>
+        <li>✓ €5/month × 24 months = €120 pure recurring revenue per user (100% margin SaaS)</li>
+        <li>✓ No capital requirement (€48 loan is virtual/on-paper only)</li>
+        <li>✓ Each user lifetime value: €120 subscription revenue + credit data + upsell opportunities</li>
+        <li>✓ Target: 50K users in 6 months (students + expats + young professionals)</li>
         <li>✓ Unit acquisition cost: €8 (viral referrals + EU startup programs)</li>
-        <li>✓ At 600K users: €12M ARR from subscriptions alone</li>
+        <li>✓ At 600K users: €72M ARR from subscriptions (€5 × 12 months × 600K users)</li>
       </ul>
     </div>
 
