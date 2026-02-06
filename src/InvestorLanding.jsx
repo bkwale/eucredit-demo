@@ -349,7 +349,7 @@ export default function InvestorLanding({ onBackToDemo }) {
               Download Pitch Deck
             </a>
             <a
-              href="https://calendly.com"
+              href="https://calendly.com/wale-krevia"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white font-semibold px-8 py-4 rounded-lg hover:bg-white/10 transition cursor-pointer"
