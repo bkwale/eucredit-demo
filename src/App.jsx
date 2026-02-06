@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, Globe, CreditCard, Building2, TrendingUp, Zap, Map, Plane, Train, Lock, ArrowRight, Check, Users, Banknote, Wifi, Clock, AlertCircle, ArrowUpRight } from 'lucide-react';
+import InvestorLanding from './InvestorLanding';
 
 const EUCreditPrototype = () => {
   const [currentPhase, setCurrentPhase] = useState('landing');
@@ -15,6 +16,7 @@ const EUCreditPrototype = () => {
   const [creditScore, setCreditScore] = useState(320);
   const [rewardsPoints, setRewardsPoints] = useState(0);
   const [showInvestorCallout, setShowInvestorCallout] = useState(false);
+  const [showInvestorPage, setShowInvestorPage] = useState(false);
 
   // Simulate credit score growth
   useEffect(() => {
@@ -45,6 +47,11 @@ const EUCreditPrototype = () => {
     setCurrentPhase('phase3-dashboard');
   };
 
+  // Render Investor Landing Page if requested
+  if (showInvestorPage) {
+    return <InvestorLanding onBackToDemo={() => setShowInvestorPage(false)} />;
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       {/* Navigation Bar */}
@@ -52,7 +59,7 @@ const EUCreditPrototype = () => {
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
             <Globe className="w-6 h-6 text-indigo-600" />
-            <span className="text-xl font-bold text-gray-900">EUCredit</span>
+            <span className="text-xl font-bold text-gray-900">Krevia</span>
           </div>
           <div className="flex gap-6 items-center">
             <button
@@ -62,7 +69,7 @@ const EUCreditPrototype = () => {
               Reset Demo
             </button>
             <button
-              onClick={() => setShowInvestorCallout(!showInvestorCallout)}
+              onClick={() => setShowInvestorPage(true)}
               className="text-sm font-medium bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition"
             >
               💼 Investor View
