@@ -340,14 +340,23 @@ export default function InvestorLanding({ onBackToDemo }) {
           </p>
 
           <div className="flex flex-col gap-4 max-w-md mx-auto">
-            <button className="flex items-center justify-center gap-2 bg-white text-indigo-600 font-semibold px-8 py-4 rounded-lg hover:bg-indigo-50 transition">
+            <a
+              href="/Krevia-Pitch-Deck.pdf"
+              download
+              className="flex items-center justify-center gap-2 bg-white text-indigo-600 font-semibold px-8 py-4 rounded-lg hover:bg-indigo-50 transition cursor-pointer"
+            >
               <Download className="w-5 h-5" />
               Download Pitch Deck
-            </button>
-            <button className="flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white font-semibold px-8 py-4 rounded-lg hover:bg-white/10 transition">
+            </a>
+            <a
+              href="https://calendly.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 bg-transparent border-2 border-white text-white font-semibold px-8 py-4 rounded-lg hover:bg-white/10 transition cursor-pointer"
+            >
               <Calendar className="w-5 h-5" />
               Schedule a Call
-            </button>
+            </a>
           </div>
 
           <p className="text-sm text-indigo-100 mt-8">
