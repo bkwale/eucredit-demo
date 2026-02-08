@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, Globe, CreditCard, Building2, TrendingUp, Zap, Map, Plane, Train, Lock, ArrowRight, Check, Users, Banknote, Wifi, Clock, AlertCircle, ArrowUpRight } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
 import InvestorLanding from './InvestorLanding';
 
 const EUCreditPrototype = () => {
@@ -195,6 +196,7 @@ const EUCreditPrototype = () => {
       {currentPhase === 'phase3-dashboard' && (
         <Phase3Dashboard userProfile={userProfile} rewardsPoints={rewardsPoints} />
       )}
+      <Analytics />
     </div>
   );
 };
@@ -596,7 +598,7 @@ const Phase2CardApplication = ({ onApply, cardApplied }) => {
 
               <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-8">
                 <p className="text-sm text-amber-900">
-                  <strong>💳 Behavior-Based Upgrades:</strong> Spend >€500/month with zero missed payments? Auto-upgrade to Platinum (5% travel cashback, higher limit) in 3 months.
+                  <strong>💳 Behavior-Based Upgrades:</strong> Spend &gt;€500/month with zero missed payments? Auto-upgrade to Platinum (5% travel cashback, higher limit) in 3 months.
                 </p>
               </div>
 

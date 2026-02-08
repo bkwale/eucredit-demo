@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChevronRight, Download, Calendar, TrendingUp, Shield, Users, Target } from 'lucide-react';
+import { Analytics } from '@vercel/analytics/react';
 
 export default function InvestorLanding({ onBackToDemo }) {
   return (
@@ -369,6 +370,7 @@ export default function InvestorLanding({ onBackToDemo }) {
       <footer className="px-8 py-12 border-t border-slate-700 text-center text-slate-400 text-sm">
         <p>Krevia | Portable Credit Identity for Mobile EU Citizens | Developed & Registered in Estonia</p>
       </footer>
+      <Analytics />
     </div>
   );
 }
