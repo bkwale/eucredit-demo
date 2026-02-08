@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, Globe, CreditCard, Building2, TrendingUp, Zap, Map, Plane, Train, Lock, ArrowRight, Check, Users, Banknote, Wifi, Clock, AlertCircle, ArrowUpRight } from 'lucide-react';
 import InvestorLanding from './InvestorLanding';
+import { Analytics } from '@vercel/analytics/react';
 
 const EUCreditPrototype = () => {
   const [currentPhase, setCurrentPhase] = useState('landing');
@@ -195,6 +196,7 @@ const EUCreditPrototype = () => {
       {currentPhase === 'phase3-dashboard' && (
         <Phase3Dashboard userProfile={userProfile} rewardsPoints={rewardsPoints} />
       )}
+      <Analytics />
     </div>
   );
 };
