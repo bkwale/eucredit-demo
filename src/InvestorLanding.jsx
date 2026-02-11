@@ -335,15 +335,24 @@ export default function InvestorLanding({ onBackToDemo }) {
       <section className="px-8 py-20 max-w-6xl mx-auto">
         <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-16 text-center">
           <h2 className="text-4xl font-bold mb-6">Ready to Invest?</h2>
+          <p className="text-lg text-indigo-100 mb-3 max-w-2xl mx-auto">
+            First, see the product in action. Watch a 90-second auto-play demo.
+          </p>
           <p className="text-lg text-indigo-100 mb-10 max-w-2xl mx-auto">
             We're raising EUR 200k-EUR 300k in seed capital to launch beta, validate unit economics, and dominate EU portable credit.
           </p>
 
           <div className="flex flex-col gap-4 max-w-md mx-auto">
+            <button
+              onClick={() => window.location.href = '/?autoplay=true'}
+              className="flex items-center justify-center gap-2 bg-white text-indigo-600 font-semibold px-8 py-4 rounded-lg hover:bg-indigo-50 transition cursor-pointer"
+            >
+              ▶️ Watch 90-Second Demo
+            </button>
             <a
               href="/Krevia-Pitch-Deck.pdf"
               download
-              className="flex items-center justify-center gap-2 bg-white text-indigo-600 font-semibold px-8 py-4 rounded-lg hover:bg-indigo-50 transition cursor-pointer"
+              className="flex items-center justify-center gap-2 bg-white/20 text-white border-2 border-white font-semibold px-8 py-4 rounded-lg hover:bg-white/30 transition cursor-pointer"
             >
               <Download className="w-5 h-5" />
               Download Pitch Deck

@@ -17,6 +17,19 @@ const EUCreditPrototype = () => {
   const [rewardsPoints, setRewardsPoints] = useState(0);
   const [showInvestorCallout, setShowInvestorCallout] = useState(false);
   const [showInvestorPage, setShowInvestorPage] = useState(false);
+  const [isAutoPlay, setIsAutoPlay] = useState(false);
+  const [autoPlayStep, setAutoPlayStep] = useState(0);
+
+  // Auto-play demo sequence
+  const autoPlaySequence = [
+    { phase: 'landing', delay: 2000, narrative: '🎯 Welcome to Krevia. Your credit, no borders.' },
+    { phase: 'phase1-dashboard', delay: 3000, narrative: '✓ One unified credit profile across 26 EU countries.' },
+    { phase: 'phase1-dashboard', delay: 5000, narrative: '📈 Watch your credit score grow as you build history.' },
+    { phase: 'phase2-dashboard', delay: 3000, narrative: '💳 Phase 2: Unlock your digital credit card.' },
+    { phase: 'phase2-dashboard', delay: 3000, narrative: '🎁 Earn rewards on every transaction.' },
+    { phase: 'phase3-dashboard', delay: 4000, narrative: '🏦 Phase 3: Full pan-EU banking services.' },
+    { phase: 'phase3-dashboard', delay: 2000, narrative: '📊 TAM: €2.3B | LTV:CAC: 15:1 | ARR: €72M by Year 3' },
+  ];
 
   // Simulate credit score growth
   useEffect(() => {
@@ -27,6 +40,42 @@ const EUCreditPrototype = () => {
       return () => clearInterval(interval);
     }
   }, [currentPhase, creditScore]);
+
+  // Auto-play demo progression
+  useEffect(() => {
+    if (!isAutoPlay) return;
+
+    if (autoPlayStep >= autoPlaySequence.length) {
+      setIsAutoPlay(false);
+      setAutoPlayStep(0);
+      return;
+    }
+
+    const currentStep = autoPlaySequence[autoPlayStep];
+    setCurrentPhase(currentStep.phase);
+
+    if (currentStep.phase === 'phase1-dashboard') {
+      setCreditScore(320);
+      setCardApplied(false);
+      setRewardsPoints(0);
+      setBankFeatures(false);
+    }
+
+    if (currentStep.phase === 'phase2-dashboard') {
+      setCardApplied(true);
+      setRewardsPoints(1250);
+    }
+
+    if (currentStep.phase === 'phase3-dashboard') {
+      setBankFeatures(true);
+    }
+
+    const timer = setTimeout(() => {
+      setAutoPlayStep(prev => prev + 1);
+    }, currentStep.delay);
+
+    return () => clearTimeout(timer);
+  }, [isAutoPlay, autoPlayStep]);
 
   const handlePhase1Signup = (data) => {
     setUserProfile(data);
@@ -77,6 +126,86 @@ const EUCreditPrototype = () => {
           </div>
         </div>
       </nav>
+
+      {/* Auto-play Demo Narration Overlay */}
+      {isAutoPlay && autoPlayStep < autoPlaySequence.length && (
+        <div className="fixed inset-0 z-50 pointer-events-none flex items-center justify-center">
+          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl p-8 shadow-2xl max-w-md mx-4 animate-pulse">
+            <div className="text-lg font-bold text-center mb-3">
+              Step {autoPlayStep + 1} / {autoPlaySequence.length}
+            </div>
+            <p className="text-center text-xl font-semibold">
+              {autoPlaySequence[autoPlayStep]?.narrative}
+            </p>
+            <div className="mt-6 flex justify-center gap-3">
+              <button
+                onClick={() => setIsAutoPlay(false)}
+                className="bg-white text-indigo-600 font-bold px-6 py-2 rounded-lg hover:bg-gray-100 transition pointer-events-auto"
+              >
+                Stop
+              </button>
+              <button
+                onClick={() => {
+                  setIsAutoPlay(false);
+                  setAutoPlayStep(0);
+                  setCurrentPhase('phase1-welcome');
+                  setCreditScore(320);
+                  setCardApplied(false);
+                  setBankFeatures(false);
+                }}
+                className="bg-white text-indigo-600 font-bold px-6 py-2 rounded-lg hover:bg-gray-100 transition pointer-events-auto"
+              >
+                Try Interactive
+              </button>
+            </div>
+            {/* Progress bar */}
+            <div className="mt-4 w-full bg-white/20 rounded-full h-2 overflow-hidden">
+              <div
+                className="bg-white h-full transition-all duration-300"
+                style={{ width: `${((autoPlayStep + 1) / autoPlaySequence.length) * 100}%` }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Auto-play completion overlay */}
+      {!isAutoPlay && autoPlayStep >= autoPlaySequence.length && autoPlayStep > 0 && (
+        <div className="fixed inset-0 z-50 pointer-events-none flex items-center justify-center">
+          <div className="bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-2xl p-8 shadow-2xl max-w-md mx-4 animate-bounce">
+            <p className="text-center text-3xl font-bold mb-4">✨ Impressive, right?</p>
+            <p className="text-center text-lg mb-6">
+              Krevia: TAM €2.3B | LTV:CAC 15:1 | Year 3 ARR €72M
+            </p>
+            <div className="flex flex-col gap-3">
+              <button
+                onClick={() => {
+                  setAutoPlayStep(0);
+                  setIsAutoPlay(true);
+                }}
+                className="bg-white text-green-600 font-bold px-6 py-3 rounded-lg hover:bg-gray-100 transition pointer-events-auto w-full"
+              >
+                ▶️ Watch Again
+              </button>
+              <button
+                onClick={() => {
+                  setAutoPlayStep(0);
+                  setCurrentPhase('landing');
+                }}
+                className="bg-white/20 text-white font-bold px-6 py-3 rounded-lg hover:bg-white/30 transition pointer-events-auto w-full border-2 border-white"
+              >
+                Back to Landing
+              </button>
+              <button
+                onClick={() => setShowInvestorPage(true)}
+                className="bg-white/20 text-white font-bold px-6 py-3 rounded-lg hover:bg-white/30 transition pointer-events-auto w-full border-2 border-white"
+              >
+                View Investor Page
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Investor Callout Overlay */}
       {showInvestorCallout && (
@@ -129,15 +258,23 @@ const EUCreditPrototype = () => {
               </div>
             </div>
 
-            <button
-              onClick={() => setCurrentPhase('phase1-welcome')}
-              className="bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-xl transition transform hover:scale-105 text-lg inline-flex items-center gap-3 shadow-lg"
-            >
-              Start the Demo <ArrowRight className="w-5 h-5" />
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={() => { setIsAutoPlay(true); setAutoPlayStep(0); setCurrentPhase('landing'); }}
+                className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-xl transition transform hover:scale-105 text-lg inline-flex items-center gap-3 shadow-lg"
+              >
+                ▶️ Watch Demo (90 sec)
+              </button>
+              <button
+                onClick={() => setCurrentPhase('phase1-welcome')}
+                className="bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-bold py-4 px-8 rounded-xl transition transform hover:scale-105 text-lg inline-flex items-center gap-3 shadow-lg"
+              >
+                Start Interactive Demo <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
 
             <p className="text-gray-600 mt-8 max-w-2xl mx-auto">
-              👉 Watch the full 3-phase journey: Credit Building → Digital Card with Rewards → Full Pan-EU Bank
+              👉 See the full 3-phase journey: Credit Building → Digital Card with Rewards → Full Pan-EU Bank
             </p>
           </div>
         </div>
