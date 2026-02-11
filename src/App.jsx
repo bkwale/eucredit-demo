@@ -19,6 +19,7 @@ const EUCreditPrototype = () => {
   const [showInvestorPage, setShowInvestorPage] = useState(false);
   const [isAutoPlay, setIsAutoPlay] = useState(false);
   const [autoPlayStep, setAutoPlayStep] = useState(0);
+  const [showAutoDemoBriefing, setShowAutoDemoBriefing] = useState(false);
 
   // Auto-play demo sequence
   const autoPlaySequence = [
@@ -98,7 +99,12 @@ const EUCreditPrototype = () => {
 
   // Render Investor Landing Page if requested
   if (showInvestorPage) {
-    return <InvestorLanding onBackToDemo={() => setShowInvestorPage(false)} />;
+    return (
+      <InvestorLanding
+        onBackToDemo={() => setShowInvestorPage(false)}
+        onShowDemoBriefing={() => setShowAutoDemoBriefing(true)}
+      />
+    );
   }
 
   return (
@@ -126,6 +132,65 @@ const EUCreditPrototype = () => {
           </div>
         </div>
       </nav>
+
+      {/* Auto-play Demo Briefing Screen */}
+      {showAutoDemoBriefing && (
+        <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl p-12 shadow-2xl max-w-md w-full text-white animate-fadeIn">
+            <div className="text-center mb-8">
+              <div className="text-5xl mb-4">🎬</div>
+              <h2 className="text-3xl font-bold mb-2">Watch the Demo</h2>
+              <p className="text-indigo-100">90 seconds to see the full Krevia story</p>
+            </div>
+
+            <div className="bg-white/10 rounded-xl p-6 mb-8 border border-white/20">
+              <p className="text-lg font-semibold mb-6">You'll see:</p>
+              <ul className="space-y-3">
+                <li className="flex gap-3 items-start">
+                  <span className="text-2xl">1️⃣</span>
+                  <span><strong>Phase 1:</strong> One unified credit profile across 26 EU countries</span>
+                </li>
+                <li className="flex gap-3 items-start">
+                  <span className="text-2xl">2️⃣</span>
+                  <span><strong>Phase 2:</strong> Digital credit card with travel rewards</span>
+                </li>
+                <li className="flex gap-3 items-start">
+                  <span className="text-2xl">3️⃣</span>
+                  <span><strong>Phase 3:</strong> Full pan-EU banking services</span>
+                </li>
+                <li className="flex gap-3 items-start">
+                  <span className="text-2xl">💰</span>
+                  <span><strong>Business:</strong> TAM €2.3B | LTV:CAC 15:1 | ARR €72M by Year 3</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-white/10 rounded-xl p-4 mb-8 border border-white/20 text-sm">
+              <p className="text-indigo-100">Auto-advancing screens. No clicking needed. Sit back and watch.</p>
+            </div>
+
+            <div className="flex gap-3 flex-col sm:flex-row">
+              <button
+                onClick={() => {
+                  setShowAutoDemoBriefing(false);
+                  setIsAutoPlay(true);
+                  setAutoPlayStep(0);
+                  setCurrentPhase('landing');
+                }}
+                className="flex-1 bg-white text-indigo-600 font-bold py-3 px-6 rounded-lg hover:bg-indigo-50 transition"
+              >
+                Start Demo
+              </button>
+              <button
+                onClick={() => setShowAutoDemoBriefing(false)}
+                className="flex-1 bg-white/20 text-white font-bold py-3 px-6 rounded-lg hover:bg-white/30 transition border border-white/30"
+              >
+                Back
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Auto-play Demo Narration Overlay */}
       {isAutoPlay && autoPlayStep < autoPlaySequence.length && (
@@ -260,7 +325,7 @@ const EUCreditPrototype = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
-                onClick={() => { setIsAutoPlay(true); setAutoPlayStep(0); setCurrentPhase('landing'); }}
+                onClick={() => setShowAutoDemoBriefing(true)}
                 className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-4 px-8 rounded-xl transition transform hover:scale-105 text-lg inline-flex items-center gap-3 shadow-lg"
               >
                 ▶️ Watch Demo (90 sec)

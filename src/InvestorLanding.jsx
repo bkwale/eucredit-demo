@@ -1,7 +1,7 @@
 import React from 'react';
 import { ChevronRight, Download, Calendar, TrendingUp, Shield, Users, Target } from 'lucide-react';
 
-export default function InvestorLanding({ onBackToDemo }) {
+export default function InvestorLanding({ onBackToDemo, onShowDemoBriefing }) {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
       {/* Navigation */}
@@ -344,7 +344,10 @@ export default function InvestorLanding({ onBackToDemo }) {
 
           <div className="flex flex-col gap-4 max-w-md mx-auto">
             <button
-              onClick={() => window.location.href = '/?autoplay=true'}
+              onClick={() => {
+                onBackToDemo();
+                setTimeout(() => onShowDemoBriefing?.(), 100);
+              }}
               className="flex items-center justify-center gap-2 bg-white text-indigo-600 font-semibold px-8 py-4 rounded-lg hover:bg-indigo-50 transition cursor-pointer"
             >
               ▶️ Watch 90-Second Demo
