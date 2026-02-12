@@ -25,88 +25,88 @@ const EUCreditPrototype = () => {
   const autoPlaySequence = [
     {
       scene: 'story-setup',
-      delay: 3000,
-      narrative: '🌍 Meet Sarah. She just landed in Berlin for a new job.'
+      delay: 3500,
+      narrative: '🌍 Meet Sarah. She just moved to Berlin from Estonia for a tech job.'
     },
     {
       scene: 'story-problem',
-      delay: 3000,
-      narrative: '🏠 She wants to rent an apartment. Simple, right?'
+      delay: 3500,
+      narrative: '🏠 She wants to rent her first apartment in Germany. Should be easy, right?'
     },
     {
       scene: 'story-rejection',
-      delay: 3000,
-      narrative: '❌ Bank: "No credit history in Germany" → Apartment rejected'
+      delay: 4000,
+      narrative: '🛑 REJECTED. Bank: "No credit history in Germany."'
     },
     {
       scene: 'story-roadblock',
-      delay: 4000,
-      narrative: '😞 The problem: Her 5 years of UK credit history doesn\'t exist in Germany. She\'s trapped.'
+      delay: 4500,
+      narrative: '😞 The trap: Sarah has 5 years of excellent credit in Estonia. It doesn\'t travel. She\'s trapped.'
     },
     {
       scene: 'story-traditional',
-      delay: 3000,
-      narrative: '❌ Traditional solutions: 20% interest rates, large deposits, start from zero'
+      delay: 4000,
+      narrative: '❌ Traditional "solutions": 20% interest rates, €5,000 deposits, or start from zero again'
     },
     {
       scene: 'story-discovery',
-      delay: 2000,
-      narrative: '💡 What if there\'s a better way?'
+      delay: 3000,
+      narrative: '💡 But what if credit could travel with you?'
     },
     {
       scene: 'story-krevia',
-      delay: 2000,
-      narrative: '✨ Sarah discovers Krevia'
+      delay: 3000,
+      narrative: '✨ Sarah discovers Krevia (built in Estonia 🇪🇪)'
     },
     {
       scene: 'story-solution-1',
-      delay: 3000,
-      narrative: '🔗 Step 1: Krevia connects to UK credit bureau (API integration)'
+      delay: 4000,
+      narrative: '🔗 Step 1: Krevia connects to Estonia\'s credit bureau via secure API'
     },
     {
       scene: 'story-solution-2',
-      delay: 3000,
-      narrative: '🔗 Step 2: Krevia connects to German credit bureau (API integration)'
+      delay: 4000,
+      narrative: '🔗 Step 2: Krevia normalizes and connects to Germany\'s credit bureaus'
     },
     {
       scene: 'story-magic',
-      delay: 3000,
-      narrative: '✨ Unified credit profile created. 5 years of history now visible in Germany.'
+      delay: 4000,
+      narrative: '✨ Magic: 5 years of credit history now visible in Germany instantly'
     },
     {
       scene: 'story-impact',
-      delay: 3000,
-      narrative: '✅ Same person, same credit history → Apartment approved! Credit card approved!'
+      delay: 4000,
+      narrative: '✅ Apartment approved ✓ | Credit card approved ✓ | Fair rates ✓'
     },
     {
       scene: 'story-payment',
-      delay: 2000,
-      narrative: '💰 Sarah pays €5/month to keep her credit connected'
+      delay: 3000,
+      narrative: '💰 Sarah pays just €5/month. Her credit stays connected across the EU.'
     },
     {
       scene: 'story-portability',
-      delay: 2000,
-      narrative: '🚀 Next year, she moves to Amsterdam. Her credit travels with her automatically.'
+      delay: 3500,
+      narrative: '🚀 Next year: Sarah moves to Amsterdam. Her credit automatically travels with her.'
     },
     {
       scene: 'story-business',
-      delay: 3000,
-      narrative: '💼 Business model: Sticky €5/month subscription × 50M mobile EU citizens = €2.3B TAM'
+      delay: 4000,
+      narrative: '💼 Business: €5/month × 50M mobile EU citizens = €2.3B TAM. 100% margin SaaS.'
     },
     {
       scene: 'story-moat',
-      delay: 3000,
-      narrative: '🛡️ The moat: Only Krevia has API access to all EU credit bureaus + data normalization'
+      delay: 4000,
+      narrative: '🛡️ Defensible: Krevia has exclusive APIs to Equifax, Experian, TransUnion across EU'
     },
     {
       scene: 'story-metrics',
-      delay: 3000,
-      narrative: '📊 Unit Economics: €8 CAC → €120 LTV = 15:1 ratio. Year 3: €72M ARR at 500K users'
+      delay: 4000,
+      narrative: '📊 Unit Economics: €8 CAC | €120 LTV | 15:1 ratio | Year 3: €72M ARR at 500K users'
     },
     {
       scene: 'story-end',
-      delay: 2000,
-      narrative: '🎯 Krevia: Infrastructure layer for EU mobility. First-mover advantage. Defensible moat.'
+      delay: 3000,
+      narrative: '🎯 Krevia: Infrastructure for EU mobility. Built in Estonia. First-mover advantage.'
     },
   ];
 
@@ -258,20 +258,20 @@ const EUCreditPrototype = () => {
         </div>
       )}
 
-      {/* Auto-play Demo Narration Overlay */}
+      {/* Auto-play Demo Narration Overlay - Fixed (non-flashing) */}
       {isAutoPlay && autoPlayStep < autoPlaySequence.length && (
-        <div className="fixed inset-0 z-50 pointer-events-none flex items-center justify-center">
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl p-8 shadow-2xl max-w-md mx-4 animate-pulse">
-            <div className="text-lg font-bold text-center mb-3">
+        <div className="fixed inset-0 z-50 pointer-events-none flex items-center justify-center p-4">
+          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl p-8 shadow-2xl max-w-md w-full animate-fadeIn">
+            <div className="text-sm font-semibold text-center mb-3 text-indigo-100">
               Step {autoPlayStep + 1} / {autoPlaySequence.length}
             </div>
-            <p className="text-center text-xl font-semibold">
+            <p className="text-center text-lg font-semibold leading-relaxed">
               {autoPlaySequence[autoPlayStep]?.narrative}
             </p>
             <div className="mt-6 flex justify-center gap-3">
               <button
                 onClick={() => setIsAutoPlay(false)}
-                className="bg-white text-indigo-600 font-bold px-6 py-2 rounded-lg hover:bg-gray-100 transition pointer-events-auto"
+                className="bg-white text-indigo-600 font-bold px-6 py-2 rounded-lg hover:bg-gray-100 transition pointer-events-auto text-sm"
               >
                 Stop
               </button>
@@ -284,7 +284,7 @@ const EUCreditPrototype = () => {
                   setCardApplied(false);
                   setBankFeatures(false);
                 }}
-                className="bg-white text-indigo-600 font-bold px-6 py-2 rounded-lg hover:bg-gray-100 transition pointer-events-auto"
+                className="bg-white text-indigo-600 font-bold px-6 py-2 rounded-lg hover:bg-gray-100 transition pointer-events-auto text-sm"
               >
                 Try Interactive
               </button>
@@ -292,7 +292,7 @@ const EUCreditPrototype = () => {
             {/* Progress bar */}
             <div className="mt-4 w-full bg-white/20 rounded-full h-2 overflow-hidden">
               <div
-                className="bg-white h-full transition-all duration-300"
+                className="bg-white h-full transition-all duration-500"
                 style={{ width: `${((autoPlayStep + 1) / autoPlaySequence.length) * 100}%` }}
               />
             </div>
@@ -359,36 +359,63 @@ const EUCreditPrototype = () => {
 
       {/* Story Setup: Meet Sarah */}
       {currentPhase === 'story-setup' && (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 px-6 py-20">
-          <div className="text-center max-w-2xl">
-            <div className="text-8xl mb-6">🌍</div>
-            <h1 className="text-5xl font-bold text-gray-900 mb-4">Meet Sarah</h1>
-            <p className="text-2xl text-gray-700">She just landed in Berlin for a new job</p>
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-cyan-100 px-6 py-20">
+          <div className="text-center max-w-3xl">
+            <div className="mb-8 animate-slideInDown">
+              {/* Animated plane/person icon */}
+              <div className="text-7xl mb-6 animate-bounce">✈️</div>
+              <div className="text-5xl mb-6">👩</div>
+              <h1 className="text-5xl font-bold text-gray-900 mb-4">Meet Sarah</h1>
+              <p className="text-2xl text-gray-700 mb-6">She just landed in Berlin from Estonia</p>
+              <div className="inline-block bg-white rounded-lg px-6 py-3 shadow-lg">
+                <p className="text-indigo-600 font-semibold">New job starts Monday. Dream begins.</p>
+              </div>
+            </div>
           </div>
         </div>
       )}
 
       {/* Story Problem: The Dream */}
       {currentPhase === 'story-problem' && (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 to-orange-100 px-6 py-20">
-          <div className="text-center max-w-2xl">
-            <div className="text-8xl mb-6">🏠</div>
-            <h1 className="text-5xl font-bold text-gray-900 mb-4">She wants to rent an apartment</h1>
-            <p className="text-2xl text-gray-700">Simple, right?</p>
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 to-yellow-100 px-6 py-20">
+          <div className="text-center max-w-3xl">
+            <div className="mb-8 animate-slideInDown">
+              {/* Apartment graphic */}
+              <div className="flex justify-center items-end gap-4 mb-8">
+                <div className="text-6xl animate-pulse">🏢</div>
+                <div className="text-6xl">👩</div>
+                <div className="text-5xl">📋</div>
+              </div>
+              <h1 className="text-5xl font-bold text-gray-900 mb-4">Perfect apartment found in Berlin</h1>
+              <div className="bg-white rounded-xl p-8 shadow-lg border-2 border-amber-300 mb-6">
+                <p className="text-2xl font-bold text-gray-900 mb-2">€1,200/month</p>
+                <p className="text-lg text-gray-700">Modern apartment • Great neighborhood • Ready now</p>
+              </div>
+              <p className="text-xl text-gray-700 font-semibold">She submits her application with confidence...</p>
+            </div>
           </div>
         </div>
       )}
 
       {/* Story Rejection */}
       {currentPhase === 'story-rejection' && (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-red-50 to-pink-100 px-6 py-20">
-          <div className="text-center max-w-2xl">
-            <div className="text-8xl mb-6">❌</div>
-            <h1 className="text-5xl font-bold text-red-600 mb-6">Rejected</h1>
-            <div className="bg-white rounded-xl p-8 shadow-lg border-2 border-red-300">
-              <p className="text-2xl font-bold text-gray-900 mb-4">Bank says:</p>
-              <p className="text-xl text-gray-700 mb-6">"No credit history in Germany"</p>
-              <p className="text-lg text-gray-600">Apartment: Rejected ❌</p>
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-red-50 to-rose-100 px-6 py-20">
+          <div className="text-center max-w-3xl">
+            <div className="mb-8 animate-slideInDown">
+              {/* Stop sign - animated shake */}
+              <div className="text-9xl mb-8 animate-shake inline-block">🛑</div>
+              <h1 className="text-6xl font-bold text-red-600 mb-6">APPLICATION DENIED</h1>
+              <div className="bg-white rounded-xl p-8 shadow-lg border-4 border-red-400 space-y-4">
+                <div className="flex items-center justify-center gap-3 mb-4">
+                  <span className="text-4xl">❌</span>
+                  <p className="text-2xl font-bold text-red-600">No credit history found</p>
+                </div>
+                <div className="bg-red-50 rounded-lg p-4 border-l-4 border-red-500">
+                  <p className="text-lg text-red-900 font-semibold">Landlord says:</p>
+                  <p className="text-lg text-red-800">"We only accept German credit reports."</p>
+                </div>
+                <p className="text-gray-600 mt-4">System could not verify creditworthiness</p>
+              </div>
             </div>
           </div>
         </div>
@@ -396,14 +423,45 @@ const EUCreditPrototype = () => {
 
       {/* Story Roadblock */}
       {currentPhase === 'story-roadblock' && (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-slate-200 px-6 py-20">
-          <div className="text-center max-w-3xl">
-            <div className="text-8xl mb-6">😞</div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-6">The Problem</h1>
-            <div className="bg-white rounded-xl p-8 shadow-lg border-l-4 border-red-500 space-y-4">
-              <p className="text-xl text-gray-700">Sarah has 5 years of excellent UK credit history</p>
-              <p className="text-xl text-gray-700 font-bold text-red-600">But in Germany: It doesn't exist</p>
-              <p className="text-xl text-gray-700">She's trapped. Starting from zero despite proven financial responsibility.</p>
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-slate-200 px-6 py-20">
+          <div className="text-center max-w-4xl">
+            <div className="mb-8 animate-slideInDown">
+              <h1 className="text-5xl font-bold text-gray-900 mb-8">The Invisible Wall</h1>
+
+              {/* Visual showing credit not traveling */}
+              <div className="grid grid-cols-3 gap-6 mb-8">
+                {/* Estonia */}
+                <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-green-400">
+                  <div className="text-5xl mb-3">🇪🇪</div>
+                  <p className="font-bold text-lg text-gray-900 mb-2">Estonia</p>
+                  <div className="bg-green-50 rounded p-3 mb-2">
+                    <p className="text-sm font-semibold text-green-900">Credit Score: 750</p>
+                    <p className="text-xs text-green-700">5 years history ✓</p>
+                  </div>
+                </div>
+
+                {/* Blocked Arrow */}
+                <div className="flex flex-col items-center justify-center">
+                  <p className="text-4xl mb-2">🚫</p>
+                  <p className="text-red-600 font-bold text-lg">BLOCKED</p>
+                  <p className="text-xs text-gray-600 mt-2">Systems don't<br/>talk to each other</p>
+                </div>
+
+                {/* Germany */}
+                <div className="bg-white rounded-xl p-6 shadow-lg border-2 border-red-400">
+                  <div className="text-5xl mb-3">🇩🇪</div>
+                  <p className="font-bold text-lg text-gray-900 mb-2">Germany</p>
+                  <div className="bg-red-50 rounded p-3 mb-2">
+                    <p className="text-sm font-semibold text-red-900">Credit Score: ???</p>
+                    <p className="text-xs text-red-700">No history found</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-gradient-to-r from-red-50 to-orange-50 rounded-xl p-8 border-2 border-red-300">
+                <p className="text-2xl font-bold text-red-700 mb-2">The Trap</p>
+                <p className="text-lg text-gray-800">Sarah has proven financial responsibility in Estonia, but in Germany she's invisible. Treated like a fresh immigrant with zero credit history.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -412,22 +470,44 @@ const EUCreditPrototype = () => {
       {/* Story Traditional Solutions */}
       {currentPhase === 'story-traditional' && (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 to-red-100 px-6 py-20">
-          <div className="text-center max-w-3xl">
-            <div className="text-8xl mb-6">❌</div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-8">Traditional "Solutions"</h1>
-            <div className="space-y-4">
-              <div className="bg-white rounded-lg p-6 shadow-md border-l-4 border-red-500">
-                <p className="text-lg font-bold text-gray-900">Option 1: Alternative Lender</p>
-                <p className="text-red-600 font-bold text-2xl">20% interest rate</p>
+          <div className="text-center max-w-4xl">
+            <div className="mb-8 animate-slideInDown">
+              <h1 className="text-5xl font-bold text-gray-900 mb-8">The "Solutions" Are Terrible</h1>
+              <div className="space-y-4">
+                <div className="bg-gradient-to-r from-red-50 to-orange-50 rounded-lg p-6 shadow-md border-2 border-red-400 transform hover:scale-105 transition">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-4xl">💸</span>
+                    <div className="text-left">
+                      <p className="text-lg font-bold text-gray-900">Option 1: Predatory Lender</p>
+                      <p className="text-red-600 font-bold text-xl">20% APR</p>
+                      <p className="text-xs text-gray-600">Desperate people pay 5x normal rates</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-red-50 to-orange-50 rounded-lg p-6 shadow-md border-2 border-red-400 transform hover:scale-105 transition">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-4xl">🏦</span>
+                    <div className="text-left">
+                      <p className="text-lg font-bold text-gray-900">Option 2: Huge Security Deposit</p>
+                      <p className="text-red-600 font-bold text-xl">€5,000+ locked away</p>
+                      <p className="text-xs text-gray-600">Tied up capital defeats the purpose</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-red-50 to-orange-50 rounded-lg p-6 shadow-md border-2 border-red-400 transform hover:scale-105 transition">
+                  <div className="flex items-center gap-3 mb-2">
+                    <span className="text-4xl">⏰</span>
+                    <div className="text-left">
+                      <p className="text-lg font-bold text-gray-900">Option 3: Start From Zero</p>
+                      <p className="text-red-600 font-bold text-xl">2-3 years to rebuild</p>
+                      <p className="text-xs text-gray-600">Ignore 5 years of perfect payment history</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="bg-white rounded-lg p-6 shadow-md border-l-4 border-red-500">
-                <p className="text-lg font-bold text-gray-900">Option 2: Bank Deposit</p>
-                <p className="text-red-600 font-bold text-2xl">€5,000 security deposit</p>
-              </div>
-              <div className="bg-white rounded-lg p-6 shadow-md border-l-4 border-red-500">
-                <p className="text-lg font-bold text-gray-900">Option 3: Start Over</p>
-                <p className="text-red-600 font-bold text-2xl">2+ years to rebuild credit</p>
-              </div>
+              <p className="text-lg text-gray-700 mt-8 font-semibold">All three options: Bad for Sarah. Good for no one.</p>
             </div>
           </div>
         </div>
@@ -437,8 +517,14 @@ const EUCreditPrototype = () => {
       {currentPhase === 'story-discovery' && (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-yellow-50 to-amber-100 px-6 py-20">
           <div className="text-center max-w-2xl">
-            <div className="text-8xl mb-6 animate-pulse">💡</div>
-            <h1 className="text-5xl font-bold text-gray-900">What if there's a better way?</h1>
+            <div className="mb-8 animate-slideInDown">
+              <div className="text-9xl mb-6 animate-bounce transform">💡</div>
+              <h1 className="text-6xl font-bold text-yellow-700 mb-4">What if...</h1>
+              <div className="bg-white rounded-xl p-8 shadow-2xl border-4 border-yellow-300">
+                <p className="text-2xl font-bold text-gray-900 mb-4">Credit could travel with you?</p>
+                <p className="text-lg text-indigo-600 font-semibold">What if your history followed you across borders?</p>
+              </div>
+            </div>
           </div>
         </div>
       )}
@@ -446,10 +532,19 @@ const EUCreditPrototype = () => {
       {/* Story Krevia */}
       {currentPhase === 'story-krevia' && (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 to-blue-100 px-6 py-20">
-          <div className="text-center max-w-2xl">
-            <div className="text-8xl mb-6">✨</div>
-            <h1 className="text-5xl font-bold text-indigo-600 mb-4">Sarah discovers Krevia</h1>
-            <p className="text-2xl text-gray-700">A solution designed for people like her</p>
+          <div className="text-center max-w-3xl">
+            <div className="mb-8 animate-slideInDown">
+              <div className="text-9xl mb-6 animate-pulse">✨</div>
+              <h1 className="text-6xl font-bold text-indigo-600 mb-2">Krevia</h1>
+              <div className="inline-block bg-gradient-to-r from-indigo-600 to-blue-600 text-white px-4 py-2 rounded-full text-lg font-semibold mb-8">
+                🇪🇪 Built in Estonia
+              </div>
+              <p className="text-2xl text-gray-700 mb-6">The solution designed for mobile Europe</p>
+              <div className="bg-white rounded-xl p-8 shadow-lg border-2 border-indigo-300">
+                <p className="text-lg text-gray-700">Portable. Digital. Instant.</p>
+                <p className="text-lg font-semibold text-indigo-600 mt-2">Everything Sarah needs in one app.</p>
+              </div>
+            </div>
           </div>
         </div>
       )}
@@ -457,15 +552,38 @@ const EUCreditPrototype = () => {
       {/* Story Solution Step 1 */}
       {currentPhase === 'story-solution-1' && (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-cyan-100 px-6 py-20">
-          <div className="text-center max-w-3xl">
-            <div className="text-8xl mb-6">🔗</div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-8">Step 1: Connect to UK Credit Bureau</h1>
-            <div className="bg-white rounded-xl p-8 shadow-lg border-2 border-blue-400">
-              <p className="text-lg text-gray-700 mb-4">Krevia uses secure APIs to access existing credit history</p>
-              <div className="flex justify-center items-center gap-4 text-3xl font-bold">
-                <span className="bg-blue-100 px-4 py-2 rounded">UK Bureau</span>
-                <span className="text-2xl">→</span>
-                <span className="bg-indigo-600 text-white px-4 py-2 rounded">Krevia API</span>
+          <div className="text-center max-w-4xl">
+            <div className="mb-8 animate-slideInDown">
+              <h1 className="text-5xl font-bold text-gray-900 mb-8">Step 1: Fetch Estonia Credit History</h1>
+
+              {/* API Flow Visualization */}
+              <div className="space-y-6">
+                <div className="flex justify-center items-center gap-4 flex-wrap">
+                  {/* Estonia Bureau */}
+                  <div className="bg-gradient-to-br from-blue-100 to-blue-50 rounded-lg p-6 border-2 border-blue-400 shadow-lg min-w-[180px]">
+                    <p className="text-sm text-gray-600 mb-2">Estonia</p>
+                    <p className="text-2xl font-bold text-blue-900">📊 Credit Bureau</p>
+                    <p className="text-xs text-gray-500 mt-2">Sarah's 5-year history</p>
+                  </div>
+
+                  {/* Arrow with animation */}
+                  <div className="flex items-center gap-2">
+                    <div className="text-2xl animate-pulse">🔗</div>
+                    <div className="text-3xl font-bold text-indigo-600 animate-bounce">→</div>
+                  </div>
+
+                  {/* Krevia */}
+                  <div className="bg-gradient-to-br from-indigo-600 to-purple-600 rounded-lg p-6 border-2 border-indigo-400 shadow-lg text-white min-w-[180px]">
+                    <p className="text-sm text-indigo-100 mb-2">Krevia Platform</p>
+                    <p className="text-2xl font-bold">🇪🇪 API</p>
+                    <p className="text-xs text-indigo-200 mt-2">Secure encrypted connection</p>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-6 border-2 border-green-300 mt-8">
+                  <p className="text-lg font-semibold text-green-900 mb-2">✓ Connection Established</p>
+                  <p className="text-gray-700">Sarah's credit profile safely retrieved and standardized</p>
+                </div>
               </div>
             </div>
           </div>
@@ -475,17 +593,45 @@ const EUCreditPrototype = () => {
       {/* Story Solution Step 2 */}
       {currentPhase === 'story-solution-2' && (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-cyan-50 to-blue-100 px-6 py-20">
-          <div className="text-center max-w-3xl">
-            <div className="text-8xl mb-6">🔗</div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-8">Step 2: Connect to German Credit Bureau</h1>
-            <div className="bg-white rounded-xl p-8 shadow-lg border-2 border-blue-400">
-              <p className="text-lg text-gray-700 mb-6">Krevia normalizes data across bureaus</p>
-              <div className="flex justify-center items-center gap-4 text-3xl font-bold flex-wrap">
-                <span className="bg-blue-100 px-4 py-2 rounded">UK Data</span>
-                <span className="text-2xl">+</span>
-                <span className="bg-blue-100 px-4 py-2 rounded">DE Data</span>
-                <span className="text-2xl">→</span>
-                <span className="bg-indigo-600 text-white px-4 py-2 rounded">Unified Profile</span>
+          <div className="text-center max-w-4xl">
+            <div className="mb-8 animate-slideInDown">
+              <h1 className="text-5xl font-bold text-gray-900 mb-8">Step 2: Submit to German Bureau</h1>
+
+              {/* API Flow - Both directions */}
+              <div className="space-y-6">
+                {/* Top: Estonia Bureau → Krevia */}
+                <div className="flex justify-center items-center gap-3">
+                  <div className="bg-blue-100 rounded-lg p-4 border-2 border-blue-400">
+                    <p className="text-sm text-gray-600">Estonia</p>
+                    <p className="font-bold text-blue-900">📊 Data</p>
+                  </div>
+                  <div className="text-2xl animate-bounce">→</div>
+                  <div className="bg-indigo-600 text-white rounded-lg p-4 border-2 border-indigo-400">
+                    <p className="text-sm text-indigo-100">Krevia</p>
+                    <p className="font-bold">⚙️ Normalize</p>
+                  </div>
+                </div>
+
+                {/* Bottom: Krevia → Germany Bureau */}
+                <div className="flex justify-center items-center gap-3">
+                  <div className="bg-indigo-600 text-white rounded-lg p-4 border-2 border-indigo-400">
+                    <p className="text-sm text-indigo-100">Krevia</p>
+                    <p className="font-bold">✓ Unified Profile</p>
+                  </div>
+                  <div className="text-2xl animate-bounce">→</div>
+                  <div className="bg-yellow-100 rounded-lg p-4 border-2 border-yellow-400">
+                    <p className="text-sm text-gray-600">Germany</p>
+                    <p className="font-bold text-yellow-900">📊 Bureau</p>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-purple-50 to-indigo-50 rounded-xl p-8 border-2 border-purple-300 mt-8">
+                  <p className="text-2xl font-bold text-purple-900 mb-2">✨ Unified Profile Created</p>
+                  <p className="text-lg text-gray-700 mb-4">Sarah's 5-year Estonian credit history now visible in Germany</p>
+                  <div className="bg-white rounded p-4 inline-block">
+                    <p className="text-center font-mono font-bold text-gray-900">Score: 750 | History: 5 years | Status: ✓ Verified</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -496,13 +642,32 @@ const EUCreditPrototype = () => {
       {currentPhase === 'story-magic' && (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-indigo-100 px-6 py-20">
           <div className="text-center max-w-3xl">
-            <div className="text-8xl mb-6 animate-bounce">✨</div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-8">The Magic Happens</h1>
-            <div className="bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl p-8 shadow-lg text-white">
-              <p className="text-2xl font-bold mb-4">5 years of UK credit history</p>
-              <p className="text-xl mb-4">+</p>
-              <p className="text-2xl font-bold mb-4">Now visible in Germany</p>
-              <p className="text-3xl font-bold text-yellow-300">= One unified profile across EU</p>
+            <div className="mb-8 animate-slideInDown">
+              <div className="text-9xl mb-8 animate-pulse">✨</div>
+              <h1 className="text-5xl font-bold text-purple-900 mb-8">The Magic</h1>
+
+              <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl p-10 shadow-2xl text-white space-y-6">
+                <div className="flex justify-center items-center gap-3">
+                  <div className="bg-white/20 rounded-lg p-4">
+                    <p className="text-sm opacity-75">Estonia</p>
+                    <p className="text-3xl font-bold">750</p>
+                  </div>
+                  <p className="text-4xl font-bold">+</p>
+                  <div className="bg-white/20 rounded-lg p-4">
+                    <p className="text-sm opacity-75">Germany</p>
+                    <p className="text-3xl font-bold">Germany Systems</p>
+                  </div>
+                </div>
+
+                <div className="border-t border-white/30 pt-6">
+                  <p className="text-xl opacity-75 mb-2">Instant Result:</p>
+                  <p className="text-4xl font-bold text-yellow-300">Unified EU Profile</p>
+                </div>
+
+                <div className="bg-white/10 rounded-lg p-4 text-sm">
+                  <p className="opacity-90">Sarah's complete credit history now recognized in Germany (and any EU country)</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -511,21 +676,59 @@ const EUCreditPrototype = () => {
       {/* Story Impact */}
       {currentPhase === 'story-impact' && (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-100 px-6 py-20">
-          <div className="text-center max-w-3xl">
-            <div className="text-8xl mb-6">✅</div>
-            <h1 className="text-4xl font-bold text-green-600 mb-8">Problem Solved</h1>
-            <div className="space-y-4">
-              <div className="bg-white rounded-lg p-6 shadow-md border-l-4 border-green-500">
-                <p className="text-xl font-bold text-gray-900 mb-2">✅ Apartment Application</p>
-                <p className="text-2xl text-green-600 font-bold">APPROVED</p>
+          <div className="text-center max-w-4xl">
+            <div className="mb-8 animate-slideInDown">
+              <h1 className="text-5xl font-bold text-green-700 mb-8">Problem Solved ✨</h1>
+
+              <div className="space-y-4">
+                <div className="bg-gradient-to-r from-green-100 to-emerald-100 rounded-lg p-8 shadow-lg border-2 border-green-400">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <p className="text-6xl">🏢</p>
+                      <div className="text-left">
+                        <p className="text-lg font-bold text-gray-900">Apartment Application</p>
+                        <p className="text-sm text-gray-600">Kreuzberg, Berlin</p>
+                      </div>
+                    </div>
+                    <p className="text-5xl font-bold text-green-600 animate-pulse">✅</p>
+                  </div>
+                  <p className="text-lg font-semibold text-green-700 mt-4">APPROVED - Move in next month!</p>
+                </div>
+
+                <div className="bg-gradient-to-r from-green-100 to-emerald-100 rounded-lg p-8 shadow-lg border-2 border-green-400">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <p className="text-6xl">💳</p>
+                      <div className="text-left">
+                        <p className="text-lg font-bold text-gray-900">Credit Card Application</p>
+                        <p className="text-sm text-gray-600">€5,000 limit approved</p>
+                      </div>
+                    </div>
+                    <p className="text-5xl font-bold text-green-600 animate-pulse">✅</p>
+                  </div>
+                  <p className="text-lg font-semibold text-green-700 mt-4">APPROVED - Card activated instantly</p>
+                </div>
+
+                <div className="bg-gradient-to-r from-green-100 to-emerald-100 rounded-lg p-8 shadow-lg border-2 border-green-400">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <p className="text-6xl">📊</p>
+                      <div className="text-left">
+                        <p className="text-lg font-bold text-gray-900">Interest Rate</p>
+                        <p className="text-sm text-gray-600">Offered rate vs predatory</p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-2xl font-bold text-green-600">4.5%</p>
+                      <p className="text-sm line-through text-red-600">vs 20%</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="bg-white rounded-lg p-6 shadow-md border-l-4 border-green-500">
-                <p className="text-xl font-bold text-gray-900 mb-2">✅ Credit Card</p>
-                <p className="text-2xl text-green-600 font-bold">APPROVED</p>
-              </div>
-              <div className="bg-white rounded-lg p-6 shadow-md border-l-4 border-green-500">
-                <p className="text-xl font-bold text-gray-900 mb-2">✅ Fair Interest Rates</p>
-                <p className="text-2xl text-green-600 font-bold">4.5% (vs 20% alternative)</p>
+
+              <div className="bg-white rounded-xl p-6 shadow-lg mt-8 border-2 border-green-300">
+                <p className="text-xl font-bold text-gray-900">Same person. Same credit history. Different outcome.</p>
+                <p className="text-lg text-green-700 font-semibold mt-2">All because Krevia made her credit portable.</p>
               </div>
             </div>
           </div>
@@ -536,12 +739,36 @@ const EUCreditPrototype = () => {
       {currentPhase === 'story-payment' && (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 to-blue-100 px-6 py-20">
           <div className="text-center max-w-3xl">
-            <div className="text-8xl mb-6">💰</div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-8">The Business Model</h1>
-            <div className="bg-white rounded-xl p-8 shadow-lg border-2 border-indigo-400">
-              <p className="text-3xl font-bold text-indigo-600 mb-4">€5 / month</p>
-              <p className="text-xl text-gray-700 mb-6">Sarah pays to keep her credit connected across countries</p>
-              <p className="text-lg text-gray-600">Recurring revenue. Zero marginal cost. 100% margin.</p>
+            <div className="mb-8 animate-slideInDown">
+              <p className="text-7xl mb-6">💰</p>
+              <h1 className="text-5xl font-bold text-gray-900 mb-8">The Business Model</h1>
+
+              <div className="bg-gradient-to-r from-indigo-600 to-blue-600 rounded-xl p-10 shadow-lg text-white space-y-6">
+                <div>
+                  <p className="text-5xl font-bold text-yellow-300 mb-2">€5</p>
+                  <p className="text-2xl font-semibold text-indigo-100">per month</p>
+                </div>
+
+                <div className="border-t border-white/30 pt-6">
+                  <p className="text-lg mb-4">Sarah's monthly payment to keep her credit connected across the EU</p>
+                  <div className="space-y-3 text-left max-w-md mx-auto bg-white/10 rounded-lg p-4">
+                    <div className="flex justify-between">
+                      <span className="text-indigo-100">Recurring revenue</span>
+                      <span className="font-bold">100%</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-indigo-100">Marginal cost</span>
+                      <span className="font-bold">~0%</span>
+                    </div>
+                    <div className="flex justify-between text-yellow-300">
+                      <span className="font-bold">Gross margin</span>
+                      <span className="font-bold">~95%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <p className="text-lg text-gray-700 mt-8">Simple, scalable, defensible.</p>
             </div>
           </div>
         </div>
@@ -550,14 +777,55 @@ const EUCreditPrototype = () => {
       {/* Story Portability */}
       {currentPhase === 'story-portability' && (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-cyan-100 px-6 py-20">
-          <div className="text-center max-w-3xl">
-            <div className="text-8xl mb-6">🚀</div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-8">The Power of Portability</h1>
-            <div className="bg-white rounded-xl p-8 shadow-lg border-2 border-green-400">
-              <p className="text-2xl font-bold text-gray-900 mb-6">Next year: Sarah moves to Amsterdam</p>
-              <p className="text-xl text-gray-700 mb-4">Her credit score automatically travels with her</p>
-              <p className="text-lg text-indigo-600 font-bold">No restart. No rejection. No friction.</p>
-              <p className="text-lg text-gray-600 mt-4">Still pays €5/month. Still has full access to finance.</p>
+          <div className="text-center max-w-4xl">
+            <div className="mb-8 animate-slideInDown">
+              <h1 className="text-5xl font-bold text-gray-900 mb-8">Portability: The Real Magic</h1>
+
+              {/* Animated journey across EU */}
+              <div className="space-y-6">
+                <p className="text-2xl text-gray-700 font-semibold">Year 2: Sarah gets a job offer in Amsterdam</p>
+
+                <div className="flex justify-center items-center gap-4 flex-wrap">
+                  <div className="bg-white rounded-lg p-6 border-2 border-gray-400 shadow-lg">
+                    <p className="text-3xl mb-2">🇩🇪</p>
+                    <p className="font-bold text-gray-900">Berlin</p>
+                    <p className="text-sm text-gray-600">Year 1</p>
+                  </div>
+
+                  <div className="text-3xl animate-bounce text-blue-600 font-bold">→</div>
+
+                  <div className="bg-white rounded-lg p-6 border-2 border-blue-400 shadow-lg">
+                    <p className="text-3xl mb-2">🇳🇱</p>
+                    <p className="font-bold text-gray-900">Amsterdam</p>
+                    <p className="text-sm text-gray-600">Year 2+</p>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-green-100 to-blue-100 rounded-xl p-8 border-2 border-green-400 shadow-lg">
+                  <p className="text-xl font-bold text-gray-900 mb-4">Her credit automatically travels with her</p>
+
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3 text-lg text-gray-700">
+                      <span className="text-2xl">✓</span>
+                      <span>6-year credit history now recognized in Netherlands</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-lg text-gray-700">
+                      <span className="text-2xl">✓</span>
+                      <span>Apartment approved in 24 hours (not weeks)</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-lg text-gray-700">
+                      <span className="text-2xl">✓</span>
+                      <span>Still pays €5/month. Still has full access to finance.</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-lg text-gray-700">
+                      <span className="text-2xl">✓</span>
+                      <span>No restart. No rejection. No friction.</span>
+                    </div>
+                  </div>
+                </div>
+
+                <p className="text-lg text-indigo-600 font-semibold mt-4">50M EU citizens need this. This is the TAM.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -566,13 +834,45 @@ const EUCreditPrototype = () => {
       {/* Story Business Case */}
       {currentPhase === 'story-business' && (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 px-6 py-20">
-          <div className="text-center max-w-3xl">
-            <div className="text-8xl mb-6">💼</div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-8">The TAM</h1>
-            <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl p-8 shadow-lg text-white space-y-4">
-              <p className="text-2xl font-bold">€5/month × 50M mobile EU citizens</p>
-              <p className="text-4xl font-bold text-yellow-300">= €2.3B TAM</p>
-              <p className="text-lg mt-6">Growing 40% annually as mobility increases</p>
+          <div className="text-center max-w-4xl">
+            <div className="mb-8 animate-slideInDown">
+              <h1 className="text-5xl font-bold text-gray-900 mb-8">The Total Addressable Market</h1>
+
+              <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl p-10 shadow-2xl text-white space-y-8">
+                <div className="space-y-4">
+                  <p className="text-2xl font-bold text-indigo-100 uppercase tracking-wide">Market Size</p>
+                  <div className="text-6xl font-bold text-yellow-300 mb-2">€5</div>
+                  <p className="text-2xl">× 50M mobile EU citizens</p>
+                  <p className="text-5xl font-bold text-yellow-200 mt-4">€2.3B</p>
+                  <p className="text-xl text-indigo-100">Annual TAM</p>
+                </div>
+
+                <div className="border-t border-white/30 pt-6 space-y-4">
+                  <p className="text-lg font-semibold mb-4">50M users includes:</p>
+                  <div className="grid grid-cols-2 gap-4 text-left">
+                    <div className="bg-white/10 rounded-lg p-3">
+                      <p className="text-sm opacity-75">📚 Students</p>
+                      <p className="font-bold text-lg">15M+</p>
+                    </div>
+                    <div className="bg-white/10 rounded-lg p-3">
+                      <p className="text-sm opacity-75">💼 Expats</p>
+                      <p className="font-bold text-lg">20M+</p>
+                    </div>
+                    <div className="bg-white/10 rounded-lg p-3">
+                      <p className="text-sm opacity-75">🚀 Digital Nomads</p>
+                      <p className="font-bold text-lg">10M+</p>
+                    </div>
+                    <div className="bg-white/10 rounded-lg p-3">
+                      <p className="text-sm opacity-75">🔄 Growing 40% YoY</p>
+                      <p className="font-bold text-lg">Accelerating</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="border-t border-white/30 pt-6">
+                  <p className="text-lg font-semibold">100% SaaS margins = €2.1B profit potential</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -581,21 +881,45 @@ const EUCreditPrototype = () => {
       {/* Story Moat */}
       {currentPhase === 'story-moat' && (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-indigo-100 px-6 py-20">
-          <div className="text-center max-w-3xl">
-            <div className="text-8xl mb-6">🛡️</div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-8">The Defensible Moat</h1>
-            <div className="space-y-4">
-              <div className="bg-white rounded-lg p-6 shadow-md border-l-4 border-indigo-600">
-                <p className="text-lg font-bold text-gray-900">Exclusive API Partnerships</p>
-                <p className="text-gray-700">Equifax, Experian, TransUnion locked in with Krevia only</p>
+          <div className="text-center max-w-4xl">
+            <div className="mb-8 animate-slideInDown">
+              <p className="text-7xl mb-6">🛡️</p>
+              <h1 className="text-5xl font-bold text-gray-900 mb-8">Why Krevia Wins</h1>
+
+              <div className="space-y-5">
+                <div className="bg-gradient-to-r from-purple-100 to-indigo-100 rounded-lg p-8 shadow-lg border-2 border-purple-400 transform hover:scale-105 transition">
+                  <div className="flex items-start gap-4">
+                    <p className="text-5xl">🔗</p>
+                    <div className="text-left">
+                      <p className="text-lg font-bold text-gray-900 mb-2">Exclusive Partnerships</p>
+                      <p className="text-gray-700">Equifax, Experian, TransUnion APIs are locked in with revenue-share clauses. Competitors can't replicate in 2+ years.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-purple-100 to-indigo-100 rounded-lg p-8 shadow-lg border-2 border-purple-400 transform hover:scale-105 transition">
+                  <div className="flex items-start gap-4">
+                    <p className="text-5xl">📊</p>
+                    <div className="text-left">
+                      <p className="text-lg font-bold text-gray-900 mb-2">Historical Data Advantage</p>
+                      <p className="text-gray-700">By Year 2, Krevia has 24+ months of normalized credit profiles. A competitor launching today needs 2+ years just to catch up.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-r from-purple-100 to-indigo-100 rounded-lg p-8 shadow-lg border-2 border-purple-400 transform hover:scale-105 transition">
+                  <div className="flex items-start gap-4">
+                    <p className="text-5xl">🌍</p>
+                    <div className="text-left">
+                      <p className="text-lg font-bold text-gray-900 mb-2">Network Effects</p>
+                      <p className="text-gray-700">500K+ users = data gravity. Lenders will NEED Krevia's data more than Krevia needs them. We become the infrastructure layer.</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="bg-white rounded-lg p-6 shadow-md border-l-4 border-indigo-600">
-                <p className="text-lg font-bold text-gray-900">Historical Data (24+ months)</p>
-                <p className="text-gray-700">Normalized credit profiles competitors need 2+ years to build</p>
-              </div>
-              <div className="bg-white rounded-lg p-6 shadow-md border-l-4 border-indigo-600">
-                <p className="text-lg font-bold text-gray-900">Network Effects</p>
-                <p className="text-gray-700">500K users = data gravity. Lenders need Krevia more than vice versa.</p>
+
+              <div className="bg-white rounded-lg p-6 mt-8 border-2 border-indigo-300">
+                <p className="text-lg font-bold text-gray-900">This moat doesn't just exist—it gets stronger every quarter</p>
               </div>
             </div>
           </div>
@@ -605,29 +929,52 @@ const EUCreditPrototype = () => {
       {/* Story Metrics */}
       {currentPhase === 'story-metrics' && (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-100 px-6 py-20">
-          <div className="text-center max-w-3xl">
-            <div className="text-8xl mb-6">📊</div>
-            <h1 className="text-4xl font-bold text-gray-900 mb-8">Unit Economics</h1>
-            <div className="space-y-4">
-              <div className="bg-white rounded-lg p-6 shadow-md">
-                <p className="text-gray-600 text-sm uppercase">CAC</p>
-                <p className="text-3xl font-bold text-green-600">€8</p>
-                <p className="text-gray-700">Customer Acquisition Cost</p>
+          <div className="text-center max-w-4xl">
+            <div className="mb-8 animate-slideInDown">
+              <p className="text-7xl mb-6">📊</p>
+              <h1 className="text-5xl font-bold text-gray-900 mb-8">Unit Economics</h1>
+
+              <div className="grid grid-cols-3 gap-4 mb-8">
+                <div className="bg-white rounded-lg p-6 shadow-lg border-2 border-green-300">
+                  <p className="text-gray-600 text-xs uppercase font-semibold mb-2">Customer Acquisition</p>
+                  <p className="text-4xl font-bold text-green-600 mb-2">€8</p>
+                  <p className="text-sm text-gray-700">CAC via partnerships</p>
+                </div>
+
+                <div className="bg-white rounded-lg p-6 shadow-lg border-2 border-emerald-300">
+                  <p className="text-gray-600 text-xs uppercase font-semibold mb-2">Lifetime Value</p>
+                  <p className="text-4xl font-bold text-emerald-600 mb-2">€120</p>
+                  <p className="text-sm text-gray-700">LTV (24 months)</p>
+                </div>
+
+                <div className="bg-gradient-to-br from-green-600 to-emerald-600 rounded-lg p-6 shadow-lg text-white border-2 border-green-400">
+                  <p className="text-xs uppercase font-semibold mb-2 text-green-100">The Ratio</p>
+                  <p className="text-4xl font-bold text-yellow-300 mb-2">15:1</p>
+                  <p className="text-sm text-green-100">vs 3:1 benchmark ✓</p>
+                </div>
               </div>
-              <div className="bg-white rounded-lg p-6 shadow-md">
-                <p className="text-gray-600 text-sm uppercase">LTV</p>
-                <p className="text-3xl font-bold text-green-600">€120</p>
-                <p className="text-gray-700">Lifetime Value (24 months)</p>
+
+              <div className="bg-gradient-to-r from-green-500 to-emerald-500 rounded-xl p-10 shadow-2xl text-white mb-8">
+                <p className="text-lg font-semibold text-green-100 mb-2">YEAR 3 PROJECTION</p>
+                <p className="text-5xl font-bold text-yellow-300 mb-3">€72M ARR</p>
+                <div className="flex justify-center gap-6 text-lg">
+                  <div>
+                    <p className="text-green-100 text-sm">500K Users</p>
+                    <p className="font-bold">Active</p>
+                  </div>
+                  <div>
+                    <p className="text-green-100 text-sm">€5/month</p>
+                    <p className="font-bold">Recurring</p>
+                  </div>
+                  <div>
+                    <p className="text-green-100 text-sm">95%+ margins</p>
+                    <p className="font-bold">SaaS</p>
+                  </div>
+                </div>
               </div>
-              <div className="bg-white rounded-lg p-6 shadow-md">
-                <p className="text-gray-600 text-sm uppercase">Ratio</p>
-                <p className="text-3xl font-bold text-green-600">15:1</p>
-                <p className="text-gray-700 text-sm">(Benchmark is 3:1)</p>
-              </div>
-              <div className="bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg p-6 shadow-md text-white mt-6">
-                <p className="text-sm uppercase">Year 3 Projection</p>
-                <p className="text-4xl font-bold">€72M ARR</p>
-                <p className="text-sm">at 500K users</p>
+
+              <div className="bg-white rounded-lg p-6 border-2 border-green-300">
+                <p className="text-gray-900 font-bold">Profitability by Year 2 with unit economics like this</p>
               </div>
             </div>
           </div>
@@ -638,14 +985,42 @@ const EUCreditPrototype = () => {
       {currentPhase === 'story-end' && (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-600 to-purple-600 px-6 py-20">
           <div className="text-center max-w-3xl text-white">
-            <div className="text-8xl mb-6">🎯</div>
-            <h1 className="text-5xl font-bold mb-8">Krevia</h1>
-            <div className="space-y-6 text-xl">
-              <p className="text-2xl">The infrastructure layer for EU mobility</p>
-              <p className="text-xl text-indigo-100">First-mover in portable credit identity</p>
-              <p className="text-xl text-indigo-100">Defensible moat through partnerships & data</p>
-              <p className="text-xl text-indigo-100">50M users × €120 LTV = €2.3B market</p>
-              <p className="text-3xl font-bold text-yellow-300 mt-8">Ready to invest?</p>
+            <div className="mb-8 animate-slideInDown">
+              <div className="text-8xl mb-8 animate-pulse">🎯</div>
+              <h1 className="text-6xl font-bold mb-4">Krevia</h1>
+              <p className="text-2xl text-indigo-100 mb-8 font-semibold">Built in Estonia 🇪🇪</p>
+
+              <div className="space-y-6 text-lg mb-12">
+                <div className="bg-white/10 rounded-lg p-4 border border-white/20">
+                  <p className="text-xl font-semibold text-indigo-50 mb-2">Infrastructure Layer</p>
+                  <p className="text-indigo-100">For EU mobility. Making credit portable across borders.</p>
+                </div>
+
+                <div className="bg-white/10 rounded-lg p-4 border border-white/20">
+                  <p className="text-xl font-semibold text-indigo-50 mb-2">First-Mover Advantage</p>
+                  <p className="text-indigo-100">Only company normalizing credit across 26 EU states with exclusive APIs</p>
+                </div>
+
+                <div className="bg-white/10 rounded-lg p-4 border border-white/20">
+                  <p className="text-xl font-semibold text-indigo-50 mb-2">Defensible Moat</p>
+                  <p className="text-indigo-100">Partnerships + historical data + network effects = 2+ year competitive advantage</p>
+                </div>
+
+                <div className="bg-white/10 rounded-lg p-4 border border-white/20">
+                  <p className="text-xl font-semibold text-indigo-50 mb-2">Massive TAM</p>
+                  <p className="text-indigo-100">€2.3B annually. 50M users × €120 LTV = €5.8B+ lifetime value</p>
+                </div>
+
+                <div className="bg-white/10 rounded-lg p-4 border border-white/20">
+                  <p className="text-xl font-semibold text-indigo-50 mb-2">Unit Economics</p>
+                  <p className="text-indigo-100">15:1 LTV:CAC | 95% margins | €72M ARR by Year 3</p>
+                </div>
+              </div>
+
+              <div className="border-t border-white/30 pt-8 mt-8">
+                <p className="text-3xl font-bold text-yellow-300 mb-2">Ready to invest?</p>
+                <p className="text-lg text-indigo-100">Let's make credit portable across Europe.</p>
+              </div>
             </div>
           </div>
         </div>
