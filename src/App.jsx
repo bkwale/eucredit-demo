@@ -20,6 +20,7 @@ const EUCreditPrototype = () => {
   const [isAutoPlay, setIsAutoPlay] = useState(false);
   const [autoPlayStep, setAutoPlayStep] = useState(0);
   const [showAutoDemoBriefing, setShowAutoDemoBriefing] = useState(false);
+  const [showNarration, setShowNarration] = useState(false);
 
   // Story-driven auto-play demo sequence for investors
   const autoPlaySequence = [
@@ -132,6 +133,7 @@ const EUCreditPrototype = () => {
 
     const currentStep = autoPlaySequence[autoPlayStep];
     setCurrentPhase(currentStep.scene || currentStep.phase);
+    setShowNarration(true);
 
     const timer = setTimeout(() => {
       setAutoPlayStep(prev => prev + 1);
@@ -139,6 +141,17 @@ const EUCreditPrototype = () => {
 
     return () => clearTimeout(timer);
   }, [isAutoPlay, autoPlayStep]);
+
+  // Hide narration after 2 seconds
+  useEffect(() => {
+    if (!showNarration) return;
+
+    const hideTimer = setTimeout(() => {
+      setShowNarration(false);
+    }, 2000);
+
+    return () => clearTimeout(hideTimer);
+  }, [showNarration]);
 
   const handlePhase1Signup = (data) => {
     setUserProfile(data);
@@ -258,10 +271,10 @@ const EUCreditPrototype = () => {
         </div>
       )}
 
-      {/* Auto-play Demo Narration Overlay - Fades in/out to reveal scenes */}
-      {isAutoPlay && autoPlayStep < autoPlaySequence.length && (
+      {/* Auto-play Demo Narration Overlay - Shows briefly then disappears */}
+      {isAutoPlay && autoPlayStep < autoPlaySequence.length && showNarration && (
         <div className="fixed inset-0 z-40 pointer-events-none flex items-center justify-center p-4">
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl p-8 shadow-2xl max-w-md w-full animate-narration">
+          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl p-8 shadow-2xl max-w-md w-full animate-slideInDown">
             <div className="text-sm font-semibold text-center mb-3 text-indigo-100">
               Step {autoPlayStep + 1} / {autoPlaySequence.length}
             </div>
