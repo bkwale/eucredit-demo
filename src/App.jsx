@@ -258,17 +258,17 @@ const EUCreditPrototype = () => {
         </div>
       )}
 
-      {/* Auto-play Demo Narration Overlay - Fixed (non-flashing) */}
+      {/* Auto-play Demo Narration Overlay - Fades in/out to reveal scenes */}
       {isAutoPlay && autoPlayStep < autoPlaySequence.length && (
-        <div className="fixed inset-0 z-50 pointer-events-none flex items-center justify-center p-4">
-          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl p-8 shadow-2xl max-w-md w-full animate-fadeIn">
+        <div className="fixed inset-0 z-40 pointer-events-none flex items-center justify-center p-4">
+          <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-2xl p-8 shadow-2xl max-w-md w-full animate-narration">
             <div className="text-sm font-semibold text-center mb-3 text-indigo-100">
               Step {autoPlayStep + 1} / {autoPlaySequence.length}
             </div>
             <p className="text-center text-lg font-semibold leading-relaxed">
               {autoPlaySequence[autoPlayStep]?.narrative}
             </p>
-            <div className="mt-6 flex justify-center gap-3">
+            <div className="mt-6 flex justify-center gap-3 opacity-80">
               <button
                 onClick={() => setIsAutoPlay(false)}
                 className="bg-white text-indigo-600 font-bold px-6 py-2 rounded-lg hover:bg-gray-100 transition pointer-events-auto text-sm"
