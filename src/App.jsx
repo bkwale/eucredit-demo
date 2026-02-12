@@ -21,15 +21,93 @@ const EUCreditPrototype = () => {
   const [autoPlayStep, setAutoPlayStep] = useState(0);
   const [showAutoDemoBriefing, setShowAutoDemoBriefing] = useState(false);
 
-  // Auto-play demo sequence
+  // Story-driven auto-play demo sequence for investors
   const autoPlaySequence = [
-    { phase: 'landing', delay: 2000, narrative: '🎯 Welcome to Krevia. Your credit, no borders.' },
-    { phase: 'phase1-dashboard', delay: 3000, narrative: '✓ One unified credit profile across 26 EU countries.' },
-    { phase: 'phase1-dashboard', delay: 5000, narrative: '📈 Watch your credit score grow as you build history.' },
-    { phase: 'phase2-dashboard', delay: 3000, narrative: '💳 Phase 2: Unlock your digital credit card.' },
-    { phase: 'phase2-dashboard', delay: 3000, narrative: '🎁 Earn rewards on every transaction.' },
-    { phase: 'phase3-dashboard', delay: 4000, narrative: '🏦 Phase 3: Full pan-EU banking services.' },
-    { phase: 'phase3-dashboard', delay: 2000, narrative: '📊 TAM: €2.3B | LTV:CAC: 15:1 | ARR: €72M by Year 3' },
+    {
+      scene: 'story-setup',
+      delay: 3000,
+      narrative: '🌍 Meet Sarah. She just landed in Berlin for a new job.'
+    },
+    {
+      scene: 'story-problem',
+      delay: 3000,
+      narrative: '🏠 She wants to rent an apartment. Simple, right?'
+    },
+    {
+      scene: 'story-rejection',
+      delay: 3000,
+      narrative: '❌ Bank: "No credit history in Germany" → Apartment rejected'
+    },
+    {
+      scene: 'story-roadblock',
+      delay: 4000,
+      narrative: '😞 The problem: Her 5 years of UK credit history doesn\'t exist in Germany. She\'s trapped.'
+    },
+    {
+      scene: 'story-traditional',
+      delay: 3000,
+      narrative: '❌ Traditional solutions: 20% interest rates, large deposits, start from zero'
+    },
+    {
+      scene: 'story-discovery',
+      delay: 2000,
+      narrative: '💡 What if there\'s a better way?'
+    },
+    {
+      scene: 'story-krevia',
+      delay: 2000,
+      narrative: '✨ Sarah discovers Krevia'
+    },
+    {
+      scene: 'story-solution-1',
+      delay: 3000,
+      narrative: '🔗 Step 1: Krevia connects to UK credit bureau (API integration)'
+    },
+    {
+      scene: 'story-solution-2',
+      delay: 3000,
+      narrative: '🔗 Step 2: Krevia connects to German credit bureau (API integration)'
+    },
+    {
+      scene: 'story-magic',
+      delay: 3000,
+      narrative: '✨ Unified credit profile created. 5 years of history now visible in Germany.'
+    },
+    {
+      scene: 'story-impact',
+      delay: 3000,
+      narrative: '✅ Same person, same credit history → Apartment approved! Credit card approved!'
+    },
+    {
+      scene: 'story-payment',
+      delay: 2000,
+      narrative: '💰 Sarah pays €5/month to keep her credit connected'
+    },
+    {
+      scene: 'story-portability',
+      delay: 2000,
+      narrative: '🚀 Next year, she moves to Amsterdam. Her credit travels with her automatically.'
+    },
+    {
+      scene: 'story-business',
+      delay: 3000,
+      narrative: '💼 Business model: Sticky €5/month subscription × 50M mobile EU citizens = €2.3B TAM'
+    },
+    {
+      scene: 'story-moat',
+      delay: 3000,
+      narrative: '🛡️ The moat: Only Krevia has API access to all EU credit bureaus + data normalization'
+    },
+    {
+      scene: 'story-metrics',
+      delay: 3000,
+      narrative: '📊 Unit Economics: €8 CAC → €120 LTV = 15:1 ratio. Year 3: €72M ARR at 500K users'
+    },
+    {
+      scene: 'story-end',
+      delay: 2000,
+      narrative: '🎯 Krevia: Infrastructure layer for EU mobility. First-mover advantage. Defensible moat.'
+    },
   ];
 
   // Simulate credit score growth
@@ -53,23 +131,7 @@ const EUCreditPrototype = () => {
     }
 
     const currentStep = autoPlaySequence[autoPlayStep];
-    setCurrentPhase(currentStep.phase);
-
-    if (currentStep.phase === 'phase1-dashboard') {
-      setCreditScore(320);
-      setCardApplied(false);
-      setRewardsPoints(0);
-      setBankFeatures(false);
-    }
-
-    if (currentStep.phase === 'phase2-dashboard') {
-      setCardApplied(true);
-      setRewardsPoints(1250);
-    }
-
-    if (currentStep.phase === 'phase3-dashboard') {
-      setBankFeatures(true);
-    }
+    setCurrentPhase(currentStep.scene || currentStep.phase);
 
     const timer = setTimeout(() => {
       setAutoPlayStep(prev => prev + 1);
@@ -139,34 +201,38 @@ const EUCreditPrototype = () => {
           <div className="bg-gradient-to-br from-indigo-600 to-purple-600 rounded-2xl p-12 shadow-2xl max-w-md w-full text-white animate-fadeIn">
             <div className="text-center mb-8">
               <div className="text-5xl mb-4">🎬</div>
-              <h2 className="text-3xl font-bold mb-2">Watch the Demo</h2>
-              <p className="text-indigo-100">90 seconds to see the full Krevia story</p>
+              <h2 className="text-3xl font-bold mb-2">The Investor Story</h2>
+              <p className="text-indigo-100">3 minutes. See the problem, solution, and business case.</p>
             </div>
 
             <div className="bg-white/10 rounded-xl p-6 mb-8 border border-white/20">
-              <p className="text-lg font-semibold mb-6">You'll see:</p>
-              <ul className="space-y-3">
+              <p className="text-lg font-semibold mb-6">You'll experience:</p>
+              <ul className="space-y-3 text-sm">
                 <li className="flex gap-3 items-start">
-                  <span className="text-2xl">1️⃣</span>
-                  <span><strong>Phase 1:</strong> One unified credit profile across 26 EU countries</span>
+                  <span>🌍</span>
+                  <span><strong>Scene 1:</strong> Meet Sarah (just landed in Berlin)</span>
                 </li>
                 <li className="flex gap-3 items-start">
-                  <span className="text-2xl">2️⃣</span>
-                  <span><strong>Phase 2:</strong> Digital credit card with travel rewards</span>
+                  <span>❌</span>
+                  <span><strong>Scene 2:</strong> The problem (credit history doesn't travel)</span>
                 </li>
                 <li className="flex gap-3 items-start">
-                  <span className="text-2xl">3️⃣</span>
-                  <span><strong>Phase 3:</strong> Full pan-EU banking services</span>
+                  <span>🔗</span>
+                  <span><strong>Scene 3:</strong> How Krevia works (API integrations)</span>
                 </li>
                 <li className="flex gap-3 items-start">
-                  <span className="text-2xl">💰</span>
-                  <span><strong>Business:</strong> TAM €2.3B | LTV:CAC 15:1 | ARR €72M by Year 3</span>
+                  <span>✅</span>
+                  <span><strong>Scene 4:</strong> The solution (unified profile across EU)</span>
+                </li>
+                <li className="flex gap-3 items-start">
+                  <span>💰</span>
+                  <span><strong>Scene 5:</strong> The business (€5/month, €2.3B TAM, 15:1 LTV:CAC)</span>
                 </li>
               </ul>
             </div>
 
             <div className="bg-white/10 rounded-xl p-4 mb-8 border border-white/20 text-sm">
-              <p className="text-indigo-100">Auto-advancing screens. No clicking needed. Sit back and watch.</p>
+              <p className="text-indigo-100">Auto-advancing scenes. Sit back and watch the story unfold.</p>
             </div>
 
             <div className="flex gap-3 flex-col sm:flex-row">
@@ -175,11 +241,11 @@ const EUCreditPrototype = () => {
                   setShowAutoDemoBriefing(false);
                   setIsAutoPlay(true);
                   setAutoPlayStep(0);
-                  setCurrentPhase('landing');
+                  setCurrentPhase('story-setup');
                 }}
                 className="flex-1 bg-white text-indigo-600 font-bold py-3 px-6 rounded-lg hover:bg-indigo-50 transition"
               >
-                Start Demo
+                Start Story
               </button>
               <button
                 onClick={() => setShowAutoDemoBriefing(false)}
@@ -285,6 +351,302 @@ const EUCreditPrototype = () => {
             <p><strong>Wedge:</strong> Credit identity + Travel loyalty (unserved gap)</p>
             <p><strong>Moat:</strong> Proprietary EU credit data + airline/rail partnerships</p>
             <p><strong>Path to Profitability:</strong> Year 2 (100% margin subscriptions + card fees + lending)</p>
+          </div>
+        </div>
+      )}
+
+      {/* STORY SCENES FOR INVESTOR DEMO */}
+
+      {/* Story Setup: Meet Sarah */}
+      {currentPhase === 'story-setup' && (
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 px-6 py-20">
+          <div className="text-center max-w-2xl">
+            <div className="text-8xl mb-6">🌍</div>
+            <h1 className="text-5xl font-bold text-gray-900 mb-4">Meet Sarah</h1>
+            <p className="text-2xl text-gray-700">She just landed in Berlin for a new job</p>
+          </div>
+        </div>
+      )}
+
+      {/* Story Problem: The Dream */}
+      {currentPhase === 'story-problem' && (
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-amber-50 to-orange-100 px-6 py-20">
+          <div className="text-center max-w-2xl">
+            <div className="text-8xl mb-6">🏠</div>
+            <h1 className="text-5xl font-bold text-gray-900 mb-4">She wants to rent an apartment</h1>
+            <p className="text-2xl text-gray-700">Simple, right?</p>
+          </div>
+        </div>
+      )}
+
+      {/* Story Rejection */}
+      {currentPhase === 'story-rejection' && (
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-red-50 to-pink-100 px-6 py-20">
+          <div className="text-center max-w-2xl">
+            <div className="text-8xl mb-6">❌</div>
+            <h1 className="text-5xl font-bold text-red-600 mb-6">Rejected</h1>
+            <div className="bg-white rounded-xl p-8 shadow-lg border-2 border-red-300">
+              <p className="text-2xl font-bold text-gray-900 mb-4">Bank says:</p>
+              <p className="text-xl text-gray-700 mb-6">"No credit history in Germany"</p>
+              <p className="text-lg text-gray-600">Apartment: Rejected ❌</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Story Roadblock */}
+      {currentPhase === 'story-roadblock' && (
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-slate-200 px-6 py-20">
+          <div className="text-center max-w-3xl">
+            <div className="text-8xl mb-6">😞</div>
+            <h1 className="text-4xl font-bold text-gray-900 mb-6">The Problem</h1>
+            <div className="bg-white rounded-xl p-8 shadow-lg border-l-4 border-red-500 space-y-4">
+              <p className="text-xl text-gray-700">Sarah has 5 years of excellent UK credit history</p>
+              <p className="text-xl text-gray-700 font-bold text-red-600">But in Germany: It doesn't exist</p>
+              <p className="text-xl text-gray-700">She's trapped. Starting from zero despite proven financial responsibility.</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Story Traditional Solutions */}
+      {currentPhase === 'story-traditional' && (
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 to-red-100 px-6 py-20">
+          <div className="text-center max-w-3xl">
+            <div className="text-8xl mb-6">❌</div>
+            <h1 className="text-4xl font-bold text-gray-900 mb-8">Traditional "Solutions"</h1>
+            <div className="space-y-4">
+              <div className="bg-white rounded-lg p-6 shadow-md border-l-4 border-red-500">
+                <p className="text-lg font-bold text-gray-900">Option 1: Alternative Lender</p>
+                <p className="text-red-600 font-bold text-2xl">20% interest rate</p>
+              </div>
+              <div className="bg-white rounded-lg p-6 shadow-md border-l-4 border-red-500">
+                <p className="text-lg font-bold text-gray-900">Option 2: Bank Deposit</p>
+                <p className="text-red-600 font-bold text-2xl">€5,000 security deposit</p>
+              </div>
+              <div className="bg-white rounded-lg p-6 shadow-md border-l-4 border-red-500">
+                <p className="text-lg font-bold text-gray-900">Option 3: Start Over</p>
+                <p className="text-red-600 font-bold text-2xl">2+ years to rebuild credit</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Story Discovery */}
+      {currentPhase === 'story-discovery' && (
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-yellow-50 to-amber-100 px-6 py-20">
+          <div className="text-center max-w-2xl">
+            <div className="text-8xl mb-6 animate-pulse">💡</div>
+            <h1 className="text-5xl font-bold text-gray-900">What if there's a better way?</h1>
+          </div>
+        </div>
+      )}
+
+      {/* Story Krevia */}
+      {currentPhase === 'story-krevia' && (
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 to-blue-100 px-6 py-20">
+          <div className="text-center max-w-2xl">
+            <div className="text-8xl mb-6">✨</div>
+            <h1 className="text-5xl font-bold text-indigo-600 mb-4">Sarah discovers Krevia</h1>
+            <p className="text-2xl text-gray-700">A solution designed for people like her</p>
+          </div>
+        </div>
+      )}
+
+      {/* Story Solution Step 1 */}
+      {currentPhase === 'story-solution-1' && (
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-cyan-100 px-6 py-20">
+          <div className="text-center max-w-3xl">
+            <div className="text-8xl mb-6">🔗</div>
+            <h1 className="text-4xl font-bold text-gray-900 mb-8">Step 1: Connect to UK Credit Bureau</h1>
+            <div className="bg-white rounded-xl p-8 shadow-lg border-2 border-blue-400">
+              <p className="text-lg text-gray-700 mb-4">Krevia uses secure APIs to access existing credit history</p>
+              <div className="flex justify-center items-center gap-4 text-3xl font-bold">
+                <span className="bg-blue-100 px-4 py-2 rounded">UK Bureau</span>
+                <span className="text-2xl">→</span>
+                <span className="bg-indigo-600 text-white px-4 py-2 rounded">Krevia API</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Story Solution Step 2 */}
+      {currentPhase === 'story-solution-2' && (
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-cyan-50 to-blue-100 px-6 py-20">
+          <div className="text-center max-w-3xl">
+            <div className="text-8xl mb-6">🔗</div>
+            <h1 className="text-4xl font-bold text-gray-900 mb-8">Step 2: Connect to German Credit Bureau</h1>
+            <div className="bg-white rounded-xl p-8 shadow-lg border-2 border-blue-400">
+              <p className="text-lg text-gray-700 mb-6">Krevia normalizes data across bureaus</p>
+              <div className="flex justify-center items-center gap-4 text-3xl font-bold flex-wrap">
+                <span className="bg-blue-100 px-4 py-2 rounded">UK Data</span>
+                <span className="text-2xl">+</span>
+                <span className="bg-blue-100 px-4 py-2 rounded">DE Data</span>
+                <span className="text-2xl">→</span>
+                <span className="bg-indigo-600 text-white px-4 py-2 rounded">Unified Profile</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Story Magic */}
+      {currentPhase === 'story-magic' && (
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-indigo-100 px-6 py-20">
+          <div className="text-center max-w-3xl">
+            <div className="text-8xl mb-6 animate-bounce">✨</div>
+            <h1 className="text-4xl font-bold text-gray-900 mb-8">The Magic Happens</h1>
+            <div className="bg-gradient-to-r from-indigo-500 to-purple-500 rounded-xl p-8 shadow-lg text-white">
+              <p className="text-2xl font-bold mb-4">5 years of UK credit history</p>
+              <p className="text-xl mb-4">+</p>
+              <p className="text-2xl font-bold mb-4">Now visible in Germany</p>
+              <p className="text-3xl font-bold text-yellow-300">= One unified profile across EU</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Story Impact */}
+      {currentPhase === 'story-impact' && (
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-100 px-6 py-20">
+          <div className="text-center max-w-3xl">
+            <div className="text-8xl mb-6">✅</div>
+            <h1 className="text-4xl font-bold text-green-600 mb-8">Problem Solved</h1>
+            <div className="space-y-4">
+              <div className="bg-white rounded-lg p-6 shadow-md border-l-4 border-green-500">
+                <p className="text-xl font-bold text-gray-900 mb-2">✅ Apartment Application</p>
+                <p className="text-2xl text-green-600 font-bold">APPROVED</p>
+              </div>
+              <div className="bg-white rounded-lg p-6 shadow-md border-l-4 border-green-500">
+                <p className="text-xl font-bold text-gray-900 mb-2">✅ Credit Card</p>
+                <p className="text-2xl text-green-600 font-bold">APPROVED</p>
+              </div>
+              <div className="bg-white rounded-lg p-6 shadow-md border-l-4 border-green-500">
+                <p className="text-xl font-bold text-gray-900 mb-2">✅ Fair Interest Rates</p>
+                <p className="text-2xl text-green-600 font-bold">4.5% (vs 20% alternative)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Story Payment */}
+      {currentPhase === 'story-payment' && (
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 to-blue-100 px-6 py-20">
+          <div className="text-center max-w-3xl">
+            <div className="text-8xl mb-6">💰</div>
+            <h1 className="text-4xl font-bold text-gray-900 mb-8">The Business Model</h1>
+            <div className="bg-white rounded-xl p-8 shadow-lg border-2 border-indigo-400">
+              <p className="text-3xl font-bold text-indigo-600 mb-4">€5 / month</p>
+              <p className="text-xl text-gray-700 mb-6">Sarah pays to keep her credit connected across countries</p>
+              <p className="text-lg text-gray-600">Recurring revenue. Zero marginal cost. 100% margin.</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Story Portability */}
+      {currentPhase === 'story-portability' && (
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-cyan-100 px-6 py-20">
+          <div className="text-center max-w-3xl">
+            <div className="text-8xl mb-6">🚀</div>
+            <h1 className="text-4xl font-bold text-gray-900 mb-8">The Power of Portability</h1>
+            <div className="bg-white rounded-xl p-8 shadow-lg border-2 border-green-400">
+              <p className="text-2xl font-bold text-gray-900 mb-6">Next year: Sarah moves to Amsterdam</p>
+              <p className="text-xl text-gray-700 mb-4">Her credit score automatically travels with her</p>
+              <p className="text-lg text-indigo-600 font-bold">No restart. No rejection. No friction.</p>
+              <p className="text-lg text-gray-600 mt-4">Still pays €5/month. Still has full access to finance.</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Story Business Case */}
+      {currentPhase === 'story-business' && (
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 px-6 py-20">
+          <div className="text-center max-w-3xl">
+            <div className="text-8xl mb-6">💼</div>
+            <h1 className="text-4xl font-bold text-gray-900 mb-8">The TAM</h1>
+            <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl p-8 shadow-lg text-white space-y-4">
+              <p className="text-2xl font-bold">€5/month × 50M mobile EU citizens</p>
+              <p className="text-4xl font-bold text-yellow-300">= €2.3B TAM</p>
+              <p className="text-lg mt-6">Growing 40% annually as mobility increases</p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Story Moat */}
+      {currentPhase === 'story-moat' && (
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-indigo-100 px-6 py-20">
+          <div className="text-center max-w-3xl">
+            <div className="text-8xl mb-6">🛡️</div>
+            <h1 className="text-4xl font-bold text-gray-900 mb-8">The Defensible Moat</h1>
+            <div className="space-y-4">
+              <div className="bg-white rounded-lg p-6 shadow-md border-l-4 border-indigo-600">
+                <p className="text-lg font-bold text-gray-900">Exclusive API Partnerships</p>
+                <p className="text-gray-700">Equifax, Experian, TransUnion locked in with Krevia only</p>
+              </div>
+              <div className="bg-white rounded-lg p-6 shadow-md border-l-4 border-indigo-600">
+                <p className="text-lg font-bold text-gray-900">Historical Data (24+ months)</p>
+                <p className="text-gray-700">Normalized credit profiles competitors need 2+ years to build</p>
+              </div>
+              <div className="bg-white rounded-lg p-6 shadow-md border-l-4 border-indigo-600">
+                <p className="text-lg font-bold text-gray-900">Network Effects</p>
+                <p className="text-gray-700">500K users = data gravity. Lenders need Krevia more than vice versa.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Story Metrics */}
+      {currentPhase === 'story-metrics' && (
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-50 to-emerald-100 px-6 py-20">
+          <div className="text-center max-w-3xl">
+            <div className="text-8xl mb-6">📊</div>
+            <h1 className="text-4xl font-bold text-gray-900 mb-8">Unit Economics</h1>
+            <div className="space-y-4">
+              <div className="bg-white rounded-lg p-6 shadow-md">
+                <p className="text-gray-600 text-sm uppercase">CAC</p>
+                <p className="text-3xl font-bold text-green-600">€8</p>
+                <p className="text-gray-700">Customer Acquisition Cost</p>
+              </div>
+              <div className="bg-white rounded-lg p-6 shadow-md">
+                <p className="text-gray-600 text-sm uppercase">LTV</p>
+                <p className="text-3xl font-bold text-green-600">€120</p>
+                <p className="text-gray-700">Lifetime Value (24 months)</p>
+              </div>
+              <div className="bg-white rounded-lg p-6 shadow-md">
+                <p className="text-gray-600 text-sm uppercase">Ratio</p>
+                <p className="text-3xl font-bold text-green-600">15:1</p>
+                <p className="text-gray-700 text-sm">(Benchmark is 3:1)</p>
+              </div>
+              <div className="bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg p-6 shadow-md text-white mt-6">
+                <p className="text-sm uppercase">Year 3 Projection</p>
+                <p className="text-4xl font-bold">€72M ARR</p>
+                <p className="text-sm">at 500K users</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Story End */}
+      {currentPhase === 'story-end' && (
+        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-600 to-purple-600 px-6 py-20">
+          <div className="text-center max-w-3xl text-white">
+            <div className="text-8xl mb-6">🎯</div>
+            <h1 className="text-5xl font-bold mb-8">Krevia</h1>
+            <div className="space-y-6 text-xl">
+              <p className="text-2xl">The infrastructure layer for EU mobility</p>
+              <p className="text-xl text-indigo-100">First-mover in portable credit identity</p>
+              <p className="text-xl text-indigo-100">Defensible moat through partnerships & data</p>
+              <p className="text-xl text-indigo-100">50M users × €120 LTV = €2.3B market</p>
+              <p className="text-3xl font-bold text-yellow-300 mt-8">Ready to invest?</p>
+            </div>
           </div>
         </div>
       )}
